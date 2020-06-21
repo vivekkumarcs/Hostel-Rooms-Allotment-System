@@ -72,7 +72,7 @@ export default class AllotmentResult extends React.Component {
                     return (
                         <div>
                             <p>
-                                Your have alloted room{" "}
+                                Your have been alloted room{" "}
                                 <span className="bold-room">
                                     {this.state.result}
                                 </span>

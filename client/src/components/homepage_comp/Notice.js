@@ -21,10 +21,13 @@ class Notice extends React.Component {
             data.data.forEach((d) => {
                 let x = "";
                 if (d.editable) {
-                    x = `${d.name} result is declared`;
+                    x = `${d.name} result has been declared`;
                 } else {
                     const date = new Date(d.Date).toString();
-                    x = `${d.name} allotment scheduled on ${date.slice(0, 15)}`;
+                    x = `${d.name} allotment is scheduled on ${date.slice(
+                        0,
+                        15
+                    )}`;
                     console.log(new Date(d.Date));
                 }
                 s.push(x);
