@@ -100,7 +100,7 @@ router.get("/hostels", adminAuth, async (req, res) => {
     try {
         let match = {};
         if (req.query.final) {
-            match = { editable: { $ne: false } };
+            match = { editable: { $eq: false } };
         }
         await req.User.populate({
             path: "hostels",
