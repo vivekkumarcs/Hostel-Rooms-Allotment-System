@@ -1,0 +1,24 @@
+@import "./base/settings";
+@import "./base/base";
+@import "./components/header";
+@import "./components/home-page";
+@import "./components/footer";
+@import "./components/loginpage";
+@import "./components/adminpage";
+@import "./components/admin_comp/addhostel";
+@import "./components/admin_comp/currenthostel";
+@import "./components/admin_comp/upcomingevents";
+@import "./components/modaloption";
+@import "./components/signuppage";
+@import "./components/userpage";
+@import "./components/NotFoundPage";
+
+@import "./components/showUsers/pagination";
+@import "./components/showUsers/searchPanel";
+@import "./components/showUsers/ContentTable";
+@import "./components/showUsers/ShowUsers";
+@import "./components/showUsers/UserModal";
+@import "./components/forgotPassword";
+@import "./components/vacantRoomModel";
+
+@import "./components/burger";

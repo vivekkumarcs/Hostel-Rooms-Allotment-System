@@ -1,0 +1,86 @@
+.home-cotent-1 {
+  width: 40%;
+  padding: 40px;
+  color: #000000;
+  margin-left: 6%;
+  // background: linear-gradient(to left, rgba(240, 235, 235, 0), #0343773f);
+}
+
+.notice {
+  margin-top: 30px;
+  height: 80%;
+  max-height: 400px;
+  margin-right: 40px;
+  width: 320px;
+}
+
+.h1tag {
+  font-size: 20px;
+  padding: 10px;
+
+  border-bottom: 2px double #000000;
+  //border-left: 2px double #000000;
+  text-align: left;
+  padding-left: 0px;
+  padding-bottom: 2px;
+  color: rgb(49, 49, 49);
+
+  margin: 0px;
+}
+.marq {
+  background-color: rgba(255, 255, 255, 0.096);
+  //box-shadow: 0px 0px 25px #459ff37c inset;
+  padding: 2px;
+  height: 90%;
+  //border-left: 2px solid #000000;
+}
+.ptag {
+  background-image: linear-gradient(#ffffff59, #00000017);
+
+  padding-left: 20px;
+  padding: 10px;
+}
+.homeflex {
+  background-image: url("../../images/login-back03.jpg");
+  background-size: cover;
+  background-repeat: inherit;
+
+  min-height: 480px;
+  padding: 20px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 720px) {
+  .homeflex {
+    background-image: url("../../images/login-back33.jpg");
+    min-height: 520px;
+    padding: 20px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .home-cotent-1 {
+    width: 80%;
+    padding: 20px;
+
+    margin-left: 20px;
+  }
+
+  .notice {
+    margin-top: 20px;
+    height: 300px;
+    margin-left: 20px;
+    width: 340px;
+    margin-bottom: 20px;
+  }
+  .h1tag {
+    font-size: 20px;
+  }
+  .marq {
+    font-size: 14px;
+  }
+}

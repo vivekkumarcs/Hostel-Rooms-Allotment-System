@@ -1,0 +1,105 @@
+.errorshow {
+  margin-bottom: 30px;
+  color: #ff0000;
+}
+.box3-1 {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.addhostellabels {
+  text-align: left;
+}
+.widthsetting {
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+}
+.hosteldetails {
+  width: 100%;
+  margin-top: -3px;
+  margin-left:-175px;
+  padding: 8px;
+  //text-align: center;
+  background-color: rgba(0, 0, 0, 0.04);
+  //box-shadow: -2px -4px 4px #00000017 inset; N
+  box-shadow:10px 4px 6px 1px #00000017 inset;
+  box-sizing: border-box;
+  width:70%;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+.hosteldetailssave {
+  background-color: #0061a1;
+  color: #ffffff;
+  padding: 10px 18px 10px 18px;
+  margin-top: 10px;
+  border: none;
+  box-shadow: 6px 6px 6px #0447949c;
+}
+.csvbuttons {
+  background-color: #0061a1;
+  color: #ffffff;
+  padding: 8px 18px 8px 18px;
+  margin: 30px;
+  margin-left: 30px;
+  margin-top: 10px;
+  border: none;
+  box-shadow: 6px 6px 6px #0447949c;
+}
+.box3-2 {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+}
+.eachbox {
+  padding: 5px;
+  margin: 0px;
+  margin-left: 5px;
+  color: #c8c8c8;
+  background: #858585;
+}
+.adddetails {
+  padding: 0px;
+  margin: 0px;
+}
+.submit {
+  text-align: right;
+}
+.addhostelbuttons {
+  font-size: small;
+  margin-right: 40px;
+  padding: 3px;
+}
+.page3 {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-bottom: 60px;
+  border: 1px solid #000000;
+}
+
+.container {
+  display: block;
+  text-align: center;
+  padding: 25px;
+  margin: 10px auto;
+  min-width: 200px;
+  background-color: #00000021;
+}
+.csv-input {
+  background-color: #cccccc;
+  padding: 15px;
+  display: block;
+  margin: 15px auto;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+}
+@media (max-width: 720px) {
+  .hosteldetails {
+    width: 100%;
+    margin-left: 0px;
+  }
+}

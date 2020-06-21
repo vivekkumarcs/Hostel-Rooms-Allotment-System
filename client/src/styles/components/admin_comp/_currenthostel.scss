@@ -1,0 +1,57 @@
+.currenthostels {
+  margin: auto;
+  margin-bottom: 6px;
+  width:50%;
+  padding: 12px;
+  background-image: linear-gradient(to left, #008eecb6, #36d8e448, #008eec);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-overflow: hidden;
+  box-shadow: 0px 0px 15px #cecece00 inset;
+}
+.divcurrenthostels {
+  margin: auto;
+  padding-top: 30px;
+  width: 80%;
+  min-width: 200px;
+  overflow: hidden;
+}
+.hostelnamesflex {
+  color: #000000;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+.fixedbuttons {
+  min-width: 230px;
+}
+.removebutton {
+  padding: 10px;
+  color:red;
+  margin-right:20px;
+  margin-top: 10px;
+  margin-left: 5px;
+  align-self: start;
+  border: none;
+  border-right: 2px solid #535151;
+  border-bottom: 1px solid #666666;
+  font-size: 14px;
+  background-color: #d7fbff;
+  //background-color:red;
+  padding: 3px 10px 3px 10px;
+}
+.removebutton:active {
+  border: 3px solid #383838;
+  background-color: #929292;
+}
+.serials {
+  padding-right: 10px;
+  border-right: 3px solid #929292;
+}
+@media (max-width: 720px) {
+  .currenthostels{
+    width:100%;
+  }
+}

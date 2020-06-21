@@ -1,0 +1,212 @@
+//burger
+@keyframes example001 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.burger {
+  padding: 28px 38px 30px 38px;
+  background-image: url("../../images/burger.png");
+  background-size: cover;
+  border: none;
+  background-color: #909090;
+  background-repeat: no-repeat;
+  margin-top: -10px;
+  margin-left: -10px;
+  font-size: 22px;
+  float: left;
+  animation: example001;
+  animation-duration: 0.5s;
+  opacity: 1;
+}
+@keyframes example01 {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.no-burger {
+  padding: 28px 38px 30px 38px;
+  background-image: url("../../images/burger.png");
+  background-size: cover;
+  border: none;
+  background-color: #909090;
+  background-repeat: no-repeat;
+  margin-top: -10px;
+  margin-left: -10px;
+  font-size: 22px;
+  float: left;
+  animation: example01;
+  animation-duration: 0.5s;
+  opacity: 0;
+}
+
+//animation of burger
+//menu opening
+@keyframes example1 {
+  from {
+    margin-left: -380px;
+  }
+
+  to {
+    margin-left: 0px;
+  }
+}
+.flex-container1 {
+  position: absolute;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 380px;
+  padding-top: 70px;
+  z-index: 1;
+  height: 750px;
+  background-color: #008cff6e; //#008cff6e
+  animation-name: example1;
+  animation-duration: 0.8s;
+}
+.DisplayNone{
+  display:None;
+}
+//menu closing
+@keyframes example11 {
+  from {
+    margin-left: 0px;
+  }
+  to {
+    margin-left: -380px;
+  }
+}
+.flex-container11 {
+  position: absolute;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 380px;
+  padding-top: 70px;
+  margin-left: -380px;
+  z-index: 1;
+  height: 750px;
+  background-color: #008cff6e; //#008cff6e
+  animation-name: example11;
+  animation-duration: 0.5s;
+}
+//button
+
+.flexdiv {
+  color: #fdfdfd;
+  padding: 0px;
+  background-color: #0059be; //#0059be
+  width: 100%;
+  padding: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+}
+.flexdiv:hover {
+  color: #ffffff;
+  padding: 0px;
+  background-color: #0077ff;
+  width: 100%;
+  padding: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  //font-family: 'Piedra', cursive;
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: bolder;
+  border: none;
+  overflow: hidden;
+}
+//avtive-button
+.buttonactive {
+  color: #ffffff;
+  padding: 0px;
+  background-color: #0077ff;
+  width: 100%;
+  padding: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  //font-family: 'Piedra', cursive;
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: bolder;
+  border: none;
+  overflow: hidden;
+}
+
+//animation end
+
+//mobile
+
+@media (max-width: 720px) {
+  .burger {
+    padding: 24px 32px 24px 32px;
+  }
+  .no-burger{
+    padding: 24px 32px 24px 32px;
+  }
+  @keyframes example1 {
+    from {
+      margin-left: -240px;
+    }
+
+    to {
+      margin-left: 0px;
+    }
+  }
+  .flex-container1 {
+    position: absolute;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 240px;
+    padding-top: 60px;
+    height: 740px;
+    background-color: #008cff6e; //#008cff6e
+    animation-name: example1;
+    animation-duration: 0.8s;
+  }
+  //menu closing
+  @keyframes example11 {
+    from {
+      margin-left: 0px;
+    }
+    to {
+      margin-left: -240px;
+    }
+  }
+  .flex-container11 {
+    position: absolute;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 240px;
+    padding-top: 60px;
+    margin-left: -240px;
+    height: 740px;
+    background-color: #008cff6e; //#008cff6e
+    animation-name: example11;
+    animation-duration: 0.5s;
+  }
+
+  .buttonactive {
+    font-size: 22px;
+  }
+  .flexdiv:hover {
+    font-size: 22px;
+  }
+}

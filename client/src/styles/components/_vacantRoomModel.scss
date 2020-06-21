@@ -1,0 +1,126 @@
+table {
+    border-collapse: collapse;
+    width: 280px;
+}
+.tr1 {
+    // background-color: #da9a9a;
+    background-color: #4362b1b3;
+    box-shadow: 0px 0px 14px 0px #1011126b inset;
+}
+
+.tr2 {
+    //background-color: #da9a9a;
+    background-color: #9ada9e;
+    box-shadow: 0px 0px 14px 0px #03030373 inset;
+}
+
+.td1 {
+    background-color: #90d6ff9c;
+    box-shadow: 0px 0px 12px 0px #039affc9 inset;
+}
+
+.td2 {
+    background-color: #c3ffbef8;
+    box-shadow: 0px 0px 12px 0px #5eff00da inset;
+}
+
+td,
+th {
+    border: 1px solid rgb(223, 223, 223);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.model-size-vacantroom1 {
+    background-color: rgba(218, 249, 255, 0.849);
+    box-shadow: 2px 2px 16px #084b426b inset;
+    padding: 20px;
+    position: absolute;
+    left: auto;
+    top: 20%;
+    border-radius: 3px;
+    width: 400px;
+    height: 60%;
+    outline: none;
+    overflow: hidden;
+}
+.vacantRoomModel {
+    height: 300px;
+    margin-top: 0px;
+    overflow-y: auto;
+}
+.vacantRoomModel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.vacantRoomModel {
+    -ms-overflow-style: none;
+}
+
+.vacantRoomModelButton {
+    margin: 0;
+    float: right;
+    padding: 0px 6px 0 6px;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    opacity: 0.6;
+    position: relative;
+    font-size: 26px;
+    font-weight: bold;
+    color: #000000fd;
+}
+.vacantRoomModelButton:hover {
+    color: #eb0101;
+    opacity: 1;
+}
+.vacantRoomModelButton:active {
+    color: #eb0101;
+    opacity: 1;
+}
+
+.margin-selectbar {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.non-moveable-header {
+    margin-top: -8px;
+    width: 400px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid #050505b0;
+}
+.h2vacant {
+    margin-top: 2px;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+.Spacing {
+    padding: 15px;
+}
+.selectroom1 {
+    width: 100%;
+}
+
+.fixedSelect {
+    width: 50%;
+    margin: auto;
+}
+
+@media (max-width: 720px) {
+    .model-size-vacantroom1 {
+        max-width: 300px;
+        max-height: 380px;
+    }
+    .non-moveable-header {
+        max-width: 300px;
+    }
+    .vacantRoomModel {
+        max-height: 340px;
+    }
+}

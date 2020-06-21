@@ -1,0 +1,21 @@
+.foot {
+  font-size: 15px;
+  color: #000000;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  background-size: auto;
+  background-image: linear-gradient(to bottom, #00193a31, #ffffff00);
+}
+.footheader {
+  color: #3a3939;
+  padding-bottom: 0px;
+  font-size: 16px;
+  font-weight: lighter;
+  margin-bottom: 0px;
+}
+@media (max-width: 720px) {
+  .footheader {
+    font-size: 15px;
+  }
+}

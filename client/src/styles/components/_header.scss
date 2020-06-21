@@ -1,0 +1,130 @@
+.header0 {
+  width: 100%;
+  background-image: url("../../images/header01.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.headerflex {
+  margin-left: 12%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.header01 {
+  margin: auto;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  font-family: "Arial Narrow Bold", sans-serif;
+  text-shadow: 0px 0px 4px #000000;
+  color: #ffffff;
+}
+
+.nav0 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #00000073;
+  padding: 16px;
+}
+
+.nav1 {
+  background-color: #0000004f;
+  font-size: 14px;
+  color: #e7e7e7;
+  padding: 40px;
+  padding-top: 20px;
+  padding-bottom: 16px;
+  margin-right: 6px;
+  //   border-right: 4px solid #013d3a;
+  text-decoration: none;
+
+  text-shadow: 0px 0px 2px #0a0a0ae1;
+}
+
+.nav2 {
+  background-color: #000000c2;
+  color: #ffffff;
+  margin-right: 6px;
+  padding-top: 20px;
+  box-shadow: 0px -2px 10px #e7e7e7;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  font-size: 20px;
+}
+//logout button
+.logout {
+  //position: absolute;
+  background-color: #fa0000;
+  font-size: 14px;
+  padding-top: 10px;
+  color: #ffffff;
+  padding: 11.1%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 6px;
+  //   border-right: 4px solid #013d3a;
+  text-decoration: none;
+  // float: right;
+  box-shadow: 0px 0px 3px #000000 inset;
+  font-family: "Merriweather", serif;
+}
+
+.floatRight {
+  float: right;
+}
+//mobile view
+@media (max-width: 720px) {
+  .header0 {
+    background-image: url("../../images/header02.jpg");
+  }
+  .header01 {
+    font-size: 25px;
+  }
+
+  .header1 {
+    padding-left: 15px;
+    font-size: 12px;
+  }
+  .nav0 {
+    padding: 6px;
+  }
+
+  .nav1 {
+    font-size: 14px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+  }
+
+  .nav2 {
+    padding-top: 10px;
+    text-decoration: none;
+    //font-family: 'Poppins', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+  }
+
+  .logout {
+    font-size: 13px;
+    padding: 9%;
+    margin-right: 10px;
+    font-family: "Merriweather", serif;
+  }
+  .logoinssertion {
+    margin-top: 8px;
+    padding: 30px;
+    // background-image: url("./logo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+  }
+  .headerflex {
+    margin-left: 0px;
+    text-align: center;
+  }
+}

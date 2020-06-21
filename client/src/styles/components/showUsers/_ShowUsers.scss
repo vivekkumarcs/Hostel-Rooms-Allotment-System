@@ -1,0 +1,32 @@
+.ShowUsers {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    background-color: #d6d6d6bd;
+    min-height: 650px;
+}
+.ShowUsers > h3 {
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #8e8e8e;
+}
+.swCloseButton {
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    color: white;
+    border: none;
+}
+.swCloseButton:active {
+    color: black;
+}
+@media (max-width: 720px) {
+    .ShowUsers {
+        min-height: 250px;
+    }
+}

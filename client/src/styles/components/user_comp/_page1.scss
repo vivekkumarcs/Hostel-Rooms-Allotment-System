@@ -1,0 +1,57 @@
+.flex-container0 {
+    display: flex;
+    justify-content: space-between;
+  }
+  .flex-container1 {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    margin: auto;
+  }
+  
+  .flexdiv {
+    background-color: #e28888;
+    width: 300px;
+    height: 100px;
+    margin: 20px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px 4px #333;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+  }
+  .flexdiv:hover {
+    background-color: #8b2525;
+  }
+  .flexdiv:active {
+    background-color: #8b2525;
+  }
+  
+  .admindiv {
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 50px;
+    margin-top: 30px;
+  
+    background-color: lightblue;
+  }
+  .adminheading {
+    border-bottom: 2px solid #333;
+  }
+  .buttonactive {
+    background-color: #a81515;
+    color: #ebebeb;
+    width: 300px;
+    height: 100px;
+    margin: 20px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px 4px #333;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+  }
+  

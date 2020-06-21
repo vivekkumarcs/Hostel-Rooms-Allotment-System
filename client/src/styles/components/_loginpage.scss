@@ -1,0 +1,101 @@
+.loginflex {
+  background-image: url("../../images/login-back03.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 640px;
+}
+.login {
+  margin: auto;
+  max-width: 420px;
+  padding-top: 100px;
+  background-position: center;
+  background-position-y: top;
+  background-image: url("../../images/send-group.jpg");
+  background-size: 150px 150px;
+  background-repeat: no-repeat;
+
+  color: #000000;
+}
+.logininfo {
+  max-width: 400px;
+}
+.login-icon-flex {
+  display: flex;
+  flex-direction: row;
+}
+.login-icons {
+  margin: 0px;
+  width: 25px;
+  height: 25px;
+  margin-right: 4px;
+  background-color: #0062ff10;
+  padding: 10px;
+  border-bottom: 1px solid #000000;
+}
+
+.loginsubmit {
+  margin: 6px;
+  text-align: center;
+  padding: 4px 40px 4px 40px;
+  border: none;
+  border-radius: 28px;
+  background-image: linear-gradient(#0086f3, #3ba5fb, #0086f3);
+
+  color: White;
+}
+.fptag {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.forgetright {
+  margin-left: 80px;
+}
+.loginsubmit:active {
+  background-image: linear-gradient(to bottom, #0069f1, #74a5ff, #0069f1);
+}
+.headings {
+  font-size: 15px;
+  font-weight: bold;
+  color: #02008b;
+}
+.logininput {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #0062ff10;
+  border-bottom: 1px solid #000000;
+}
+.signupoption {
+  padding: 4px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #0000001f;
+  border-radius: 10px;
+}
+
+.temp {
+  margin-top: 10px;
+  padding: 30px;
+  box-shadow: 0px 3px 10px #00000093;
+}
+
+//mobile-view
+@media (max-width: 720px) {
+  .loginflex {
+    margin: auto;
+    background-image: url("../../images/login-back33.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 640px;
+  }
+  .login {
+    margin: auto;
+  }
+  .temp {
+    box-shadow: none;
+  }
+}

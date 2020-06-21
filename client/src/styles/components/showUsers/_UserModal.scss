@@ -1,0 +1,72 @@
+.userModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(130, 130, 130, 0.64);
+}
+.UserModalWrapper {
+    background-color: white;
+    outline: none;
+    padding: 20px;
+    position: absolute;
+    left: auto;
+    top: auto;
+    border-radius: 3px;
+    box-shadow: 6px 6px 5px rgb(136, 131, 131);
+}
+.UMclose {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: none;
+    font-size: larger;
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+}
+.UserModalWrapper > h1 {
+    text-align: center;
+    margin: 0px;
+    padding-bottom: 20px;
+}
+.Minput {
+    padding-bottom: 20px;
+}
+.UMbox {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 5px;
+    background-color: #dee0e8;
+}
+.UMselect {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-color: #dee0e8;
+}
+.UMsubmit {
+    float: right;
+    padding: 5px 10px 5px 10px;
+    background-color: #444bf1;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+.LABEL {
+    float: left;
+    width: 80px;
+}
+.UMsubmit:enabled:hover {
+    color: black;
+}
+.UMsubmit:disabled {
+    opacity: 0.5;
+}
