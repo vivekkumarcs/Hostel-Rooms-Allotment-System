@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const hostelCode = require("../Models/hostelcode");
 url = "mongodb://127.0.0.1:27017/hostel-allotment-database";
-mongoose.connect(url, {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
