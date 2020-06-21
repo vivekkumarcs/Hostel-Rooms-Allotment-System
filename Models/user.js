@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
     },
     result: {
         type: String,
-        default: "",
+        default: null,
     },
     editable: {
         type: Boolean,

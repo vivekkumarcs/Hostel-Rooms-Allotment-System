@@ -269,15 +269,15 @@ router.patch("/:hostelid/:uid", adminAuth, async (req, res) => {
         await User.save();
         console.log(req.body.password);
         res.send(User);
-        //sending password to registered email if password is resetted
-        // if (req.body.reset) {
-        //     await sendUserDetails(
-        //         User.email,
-        //         User.userid,
-        //         req.body.password,
-        //         User.name
-        //     );
-        // }
+        // sending password to registered email if password is resetted
+        if (req.body.reset) {
+            await sendUserDetails(
+                User.email,
+                User.userid,
+                req.body.password,
+                User.name
+            );
+        }
     } catch (e) {
         res.status(400).send({ error: "from updating details of users" });
     }
@@ -341,16 +341,19 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
 
         // sending emails to users for their credentials
 
-        // const users = await Hostel.populate({
-        //     path: 'users',
-        // }).execPopulate().users
+        const users = await Hostel.populate({
+            path: "users",
+        }).execPopulate().users;
 
-        // for(User of users){
-        //     let password = randomPassword(8)
-        //     User.password = password
-        //     await User.save()
-        //     await sendUserDetails(User.email, User.userid, password, User.name)
-        // }
+        for (User of users) {
+            let password = randomPassword(8);
+            User.password = password;
+            User.round = 0;
+            User.preferences = [];
+            User.result = null;
+            await User.save();
+            await sendUserDetails(User.email, User.userid, password, User.name);
+        }
     } catch (e) {
         res.status(400).send({ error: e.message });
     }

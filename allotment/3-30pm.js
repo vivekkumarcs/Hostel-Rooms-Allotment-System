@@ -18,10 +18,11 @@ const _330pm = async () => {
 
         await Hostel.populate({
             path: "users",
-            match: { round: { $eq: 2 } },
+            // match: { round: { $eq: 2 } },
         }).execPopulate();
 
         for (const User of Hostel.users) {
+            User.round = 2;
             User.result = URmap[User.userid] ? URmap[User.userid] : "";
             await User.save();
         }

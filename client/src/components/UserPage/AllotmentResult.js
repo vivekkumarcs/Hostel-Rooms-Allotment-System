@@ -66,6 +66,8 @@ export default class AllotmentResult extends React.Component {
             } else {
                 if (this.state.result.length === 0) {
                     return <p>No room is alloted to you</p>;
+                } else if (this.state.result === null) {
+                    return <p>Result is not yet declared</p>;
                 } else {
                     return (
                         <div>
@@ -129,6 +131,7 @@ export default class AllotmentResult extends React.Component {
                     </p>
                 )}
                 {this.handleShow()}
+                {/* round 2 and editable false the show the link to download result */}
             </div>
         );
     }

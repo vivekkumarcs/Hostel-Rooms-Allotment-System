@@ -17,14 +17,14 @@ const _1pm = async () => {
         $or: [{ result: { $eq: "" } }, { nextRound: { $eq: true } }],
     };
     for (const Hostel of Hostels) {
-        // await user.updateMany(
-        //     {
-        //         _id: { $in: Hostel.users },
-        //         nextRound: { $eq: false },
-        //         result: { $ne: "" },
-        //     },
-        //     { round: 2 }
-        // );
+        await user.updateMany(
+            {
+                _id: { $in: Hostel.users },
+                nextRound: { $eq: false },
+                result: { $ne: "" },
+            },
+            { round: 4 }
+        );
 
         const tmpData = await temp.findOne({ name: Hostel.name });
         let data = JSON.parse(tmpData.data);
@@ -68,7 +68,7 @@ const _1pm = async () => {
         for (const User of users) {
             User.preferences = [];
             User.round = 2;
-            User.result = "";
+            User.result = null;
             User.disabledQuota = false;
             User.editable = true;
             await User.save();
