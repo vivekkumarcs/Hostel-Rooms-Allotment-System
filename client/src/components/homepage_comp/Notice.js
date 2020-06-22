@@ -16,7 +16,7 @@ class Notice extends React.Component {
     componentDidMount = async () => {
         try {
             const data = await axios.get("/api/getNotification");
-            console.log(data.data);
+            // console.log(data.data);
             const s = [];
             data.data.forEach((d) => {
                 let x = "";
@@ -28,7 +28,7 @@ class Notice extends React.Component {
                         0,
                         15
                     )}`;
-                    console.log(new Date(d.Date));
+                    // console.log(new Date(d.Date));
                 }
                 s.push(x);
             });
@@ -39,7 +39,7 @@ class Notice extends React.Component {
                 students: s,
             }));
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     };
     render() {
@@ -47,11 +47,7 @@ class Notice extends React.Component {
             <div className="notice">
                 <p className="h1tag">Allotment Notifications</p>
                 <marquee className="marq" direction="up" scrollamount="3">
-                    <div>
-                        {/* temporary data */}
-
-                        {this.createNoticeElement()}
-                    </div>
+                    <div>{this.createNoticeElement()}</div>
                 </marquee>
             </div>
         );

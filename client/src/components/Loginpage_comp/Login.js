@@ -80,14 +80,14 @@ class Login extends React.Component {
                     {this.state.error && (
                         <p className="errorshow">{this.state.error}</p>
                     )}
-                    <p className="headings"> User_id</p>
+                    <p className="headings"> Username</p>
                     <p className="login-icon-flex">
                         <img className="login-icons" src={user} alt="" />
                         <input
                             className="logininput"
                             type="text"
                             name="username"
-                            placeholder="User_name"
+                            placeholder="Username"
                             required={true}
                             maxLength={50}
                         />

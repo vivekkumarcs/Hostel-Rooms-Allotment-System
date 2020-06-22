@@ -115,7 +115,7 @@ class Signup extends React.Component {
                                 type="password"
                                 id="retypePassword_id"
                                 name="rPassword"
-                                placeholder="confirm_password"
+                                placeholder="confirm password"
                                 required={true}
                                 minLength={8}
                                 maxLength={15}
