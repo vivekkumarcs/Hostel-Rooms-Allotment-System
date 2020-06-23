@@ -15,9 +15,9 @@ class Page3 extends React.Component {
         const provided = new Date(date).setHours(0, 0, 0, 0);
 
         try {
-            if (provided <= current) {
-                throw new Error("Date must be greater than current Date");
-            }
+            // if (provided <= current) {
+            //     throw new Error("Date must be greater than current Date");
+            // }
 
             // send the date to backend using axios
             const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.id}/finalSubmit`;

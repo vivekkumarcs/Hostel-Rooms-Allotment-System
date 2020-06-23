@@ -37,7 +37,10 @@ class Signup extends React.Component {
             if (e.response) {
                 const error = e.response;
                 if (error.status >= 400 && error.status < 500) {
-                    msg = "provided email already exist";
+                    msg =
+                        error.status === 401
+                            ? "provided unique key is invalid"
+                            : "provided email already exists";
                 } else {
                     msg = "Please Try Again Later";
                 }

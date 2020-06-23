@@ -38,7 +38,7 @@ router.get("/getNotification", async (req, res) => {
 router.post("/signup", async (req, res) => {
     try {
         if (req.body.uniqueKey !== process.env.UNIQUE_KEY)
-            throw new Error("invalid unique key");
+            throw new Error("401");
         validate(req.body.password);
         const newUser = new admin({
             email: req.body.email,
@@ -60,7 +60,8 @@ router.post("/signup", async (req, res) => {
         res.status(201).send({ User: remaining, admin: true, token: token });
     } catch (e) {
         console.log(e);
-        res.status(400).send({ error: e.message });
+        if (e.message === "401") res.status(401).send();
+        else res.status(400).send({ error: e.message });
     }
 });
 

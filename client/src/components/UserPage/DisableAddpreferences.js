@@ -7,7 +7,10 @@ export default class DisableAddPreferences extends React.Component {
                 <h1 className="heading111">Add Preferences</h1>
                 {/*<div>This is disable add preferences page</div>*/}
 
-                <p>This feature is currently disabled for you.</p>
+                <p style={{ textAlign: "center" }}>
+                    This feature is currently disabled for you. And it will be
+                    active during allotment.
+                </p>
             </div>
         );
     }
