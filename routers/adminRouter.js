@@ -316,7 +316,13 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
         }
 
         const todaysDate = getCurrentLocalTime();
-        const providedDate = new Date(req.body.Date).setHours(0, 0, 0, 0);
+        // const providedDate = new Date(req.body.Date).setHours(0, 0, 0, 0);
+        const x = new Date(req.body.Date);
+        let providedDate = x.getTime();
+        let offset = x.getTimezoneOffset();
+        providedDate += offset * 60000;
+        providedDate += 330 * 60000;
+        providedDate = new Date(providedDate).setHours(0, 0, 0, 0);
 
         // if (providedDate <= todaysDate) {
         //     throw new Error("Date must be greater than current Date");
