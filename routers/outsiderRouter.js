@@ -169,16 +169,14 @@ router.post("/forgetPassword", async (req, res) => {
                 OTP += s[Math.floor(Math.random() * 10)];
             }
             OTP = parseInt(OTP);
-            tmp = new otp({ email: req.body.email.toLowerCase() });
+            tmp = new otp({ email: req.body.email.toLowerCase(), OTP: OTP });
             await tmp.save();
-
             await sendEmail(
                 tmp.email,
                 "Password Reset",
                 `${tmp.OTP} is One Time Password. This is valid for 120 seconds.`,
                 ""
             );
-
             res.send({ sent: true });
         } while (false);
     } catch (e) {
