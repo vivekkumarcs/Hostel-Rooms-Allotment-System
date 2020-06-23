@@ -5,7 +5,7 @@ const hostel = require("../Models/hostel");
 const hostelCode = require("../Models/hostelcode");
 const upload = require("../middleware/multerFileUpload");
 const adminAuth = require("../middleware/adminAuth");
-const { sendUserDetails } = require("../email/email");
+const { sendUserDetails, sendBulk } = require("../email/email");
 const validateCSV = require("../middleware/validateCSV");
 const validate = require("../helpers/passwordValidation");
 const randomPassword = require("../helpers/randomPassword");
@@ -268,7 +268,6 @@ router.patch("/:hostelid/:uid", adminAuth, async (req, res) => {
         });
         await User.save();
         console.log(req.body.password);
-        res.send(User);
         // sending password to registered email if password is resetted
         if (req.body.reset) {
             await sendUserDetails(
@@ -278,6 +277,7 @@ router.patch("/:hostelid/:uid", adminAuth, async (req, res) => {
                 User.name
             );
         }
+        res.send(User);
     } catch (e) {
         res.status(400).send({ error: "from updating details of users" });
     }
@@ -337,23 +337,28 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
                 "please upload the CSV first / date has already submitted"
             );
         }
-        res.send();
-
-        // sending emails to users for their credentials
-
-        const users = await Hostel.populate({
-            path: "users",
-        }).execPopulate().users;
-
-        for (User of users) {
+        // console.log(users);
+        const personalizations = [];
+        for (User of users.users) {
             let password = randomPassword(8);
             User.password = password;
             User.round = 0;
             User.preferences = [];
             User.result = null;
             await User.save();
-            await sendUserDetails(User.email, User.userid, password, User.name);
+            personalizations.push({
+                to: User.email,
+                substitutions: {
+                    name: User.name,
+                    userid: User.userid,
+                    password: password,
+                },
+            });
+            // sendUserDetails(User.email, User.userid, password, User.name);
         }
+        // console.log(personalizations);
+        sendBulk(personalizations);
+        res.send();
     } catch (e) {
         res.status(400).send({ error: e.message });
     }

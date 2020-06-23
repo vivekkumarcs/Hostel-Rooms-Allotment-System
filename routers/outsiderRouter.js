@@ -37,6 +37,8 @@ router.get("/getNotification", async (req, res) => {
 
 router.post("/signup", async (req, res) => {
     try {
+        if (req.body.uniqueKey !== process.env.UNIQUE_KEY)
+            throw new Error("invalid unique key");
         validate(req.body.password);
         const newUser = new admin({
             email: req.body.email,
@@ -86,9 +88,12 @@ router.post("/signin", async (req, res) => {
         await User.save();
         if (req.body.userid) {
             // for User
+            const Hostel = await hostel.findById(User.hostelid);
             User = User.toObject();
+            User.hostelName = Hostel.name;
+            User.Date = Hostel.Date;
+            if (Hostel.editable) User.Date = null;
             if (User.editable) {
-                const Hostel = await hostel.findById(User.hostelid);
                 User.vacantRooms = Hostel.vacantRooms;
                 if (User.disabled) User.disabledRooms = Hostel.disabledRooms;
             }

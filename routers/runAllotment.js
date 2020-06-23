@@ -14,8 +14,8 @@ const router = express.Router();
 
 router.get("/8am", async (req, res) => {
     try {
-        res.send();
         await _8am();
+        res.send();
         console.log("8am done!!");
     } catch (e) {
         console.log("error from 8am");
@@ -25,8 +25,8 @@ router.get("/8am", async (req, res) => {
 
 router.get("/11am", async (req, res) => {
     try {
-        res.send();
         await _11am();
+        res.send();
         console.log("11am done!!");
     } catch (e) {
         console.log("error from 11am");
@@ -36,8 +36,8 @@ router.get("/11am", async (req, res) => {
 
 router.get("/1130am", async (req, res) => {
     try {
-        res.send();
         await _1130am();
+        res.send();
         console.log("1130am done!!");
     } catch (e) {
         console.log("error from 1130am");
@@ -47,8 +47,8 @@ router.get("/1130am", async (req, res) => {
 
 router.get("/1pm", async (req, res) => {
     try {
-        res.send();
         await _1pm();
+        res.send();
         console.log("1pm done!!");
     } catch (e) {
         console.log("error from 1pm");
@@ -58,8 +58,8 @@ router.get("/1pm", async (req, res) => {
 
 router.get("/3pm", async (req, res) => {
     try {
-        res.send();
         await _3pm();
+        res.send();
         console.log("3pm done!!");
     } catch (e) {
         console.log("error from 3pm");
@@ -69,8 +69,8 @@ router.get("/3pm", async (req, res) => {
 
 router.get("/330pm", async (req, res) => {
     try {
-        res.send();
         await _330pm();
+        res.send();
         console.log("330pm done!!");
     } catch (e) {
         console.log("error from 330pm");

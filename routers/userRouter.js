@@ -7,9 +7,12 @@ const router = express.Router();
 
 //1. get user information
 router.get("/", userAuth, async (req, res) => {
+    const Hostel = await hostel.findById(req.User.hostelid);
     let User = req.User.toObject();
+    User.hostelName = Hostel.name;
+    User.Date = Hostel.Date;
+    if (Hostel.editable) User.Date = null;
     if (User.editable) {
-        const Hostel = await hostel.findById(User.hostelid);
         User.vacantRooms = Hostel.vacantRooms;
         if (User.disabled) User.disabledRooms = Hostel.disabledRooms;
     }
