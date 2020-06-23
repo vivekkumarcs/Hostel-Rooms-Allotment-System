@@ -16,7 +16,7 @@ class ContentTable extends React.Component {
         console.log(details);
         try {
             const User = this.props.Users[this.state.index];
-            const url = `/api/admin/${User.hostelid}/${User._id}`;
+            const url = `https://hostel-allotment-api.herokuapp.com/admin/${User.hostelid}/${User._id}`;
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))

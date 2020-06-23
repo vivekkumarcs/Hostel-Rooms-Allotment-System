@@ -127,7 +127,8 @@ export default class AddPrefernces extends React.Component {
             }));
         } else {
             try {
-                const url = "/api/user/preferences";
+                const url =
+                    "https://hostel-allotment-api.herokuapp.com/user/preferences";
                 const config = {
                     headers: {
                         Authorization: JSON.parse(

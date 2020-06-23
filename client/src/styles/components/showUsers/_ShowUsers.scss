@@ -1,32 +1,33 @@
 .ShowUsers {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-    background-color: #d6d6d6bd;
-    min-height: 650px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  background-color: #f6f6f6bd;
+  min-height: 650px;
+  margin-bottom: 10px;
 }
 .ShowUsers > h3 {
-    text-align: center;
-    color: black;
-    font-size: 30px;
-    margin: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #8e8e8e;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #f3f3f3;
 }
 .swCloseButton {
-    float: right;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    color: white;
-    border: none;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  color: white;
+  border: none;
 }
 .swCloseButton:active {
-    color: black;
+  color: black;
 }
 @media (max-width: 720px) {
-    .ShowUsers {
-        min-height: 250px;
-    }
+  .ShowUsers {
+    min-height: 600px;
+  }
 }

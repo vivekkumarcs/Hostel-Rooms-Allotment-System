@@ -243,6 +243,10 @@
   margin-top: 40px;
 }
 
+.LargeSize{
+  font-size: x-large;
+}
+
 .heading > legend {
   background-color: #000;
   color: #fff;
@@ -356,5 +360,11 @@
   }
 }
 
+@media(max-width:960px){
+  .LargeSize{
+    font-size: large;
+  }
+  
+}
 
 

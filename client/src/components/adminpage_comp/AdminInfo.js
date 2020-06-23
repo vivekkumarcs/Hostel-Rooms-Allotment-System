@@ -20,7 +20,7 @@ export default class AdminInfo extends React.Component {
 
     handleDownload = async (hostelName) => {
         try {
-            const url = `/api/admin/result?hostelName=${hostelName}`;
+            const url = `https://hostel-allotment-api.herokuapp.com/admin/result?hostelName=${hostelName}`;
             const userData = JSON.parse(localStorage.getItem("userData"));
             const config = {
                 responseType: "blob",
@@ -99,7 +99,7 @@ export default class AdminInfo extends React.Component {
                     <div className="overflowcontrol">
                         <div className="bring-middle">
                             {this.state.variable === 1
-                                ? yourinfo(this.props.User.name)
+                                ? yourinfo(this.props.User)
                                 : ""}
                             {/*this.state.variable === 2 ? <ChangeAdminpassword /> : ""*/}
                             {this.state.variable === 3 && (
@@ -131,11 +131,13 @@ export default class AdminInfo extends React.Component {
         );
     }
 }
-const yourinfo = (name) => {
+const yourinfo = (User) => {
     return (
         <div className="spacing">
-            <h4>Welcome back {name}</h4>
-
+            <h4>Welcome back {User.name}</h4>
+            <p>
+                Your Email: <b>{User.email}</b>
+            </p>
             <p>Your room allotment is under process.</p>
         </div>
     );

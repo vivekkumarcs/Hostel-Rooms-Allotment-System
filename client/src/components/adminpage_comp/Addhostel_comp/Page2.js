@@ -7,23 +7,23 @@ class Page2 extends React.Component {
     state = {
         inValidMessages: [],
         error: "",
+        uploading: false,
     };
     handleupload = async (e) => {
+        this.setState(() => ({ uploading: true }));
         e.preventDefault();
         e.persist();
         if (!e.target.elements.csvData.files[0]) return;
         const csvData = await validateCSV(e.target.elements.csvData.files[0]);
-        console.log(csvData.data);
-        console.log(csvData.inValidMessages);
+        // console.log(csvData.data);
+        // console.log(csvData.inValidMessages);
         try {
             if (csvData.inValidMessages.length > 0) {
                 throw new Error();
             }
             this.setState(() => ({ inValidMessages: [] }));
-            //console.log(this.props.id);
-
             //uploading the csv to server
-            const url = `/api/admin/${this.props.id}/upload`;
+            const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.id}/upload`;
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))
@@ -41,18 +41,16 @@ class Page2 extends React.Component {
             let er = "";
             if (csvData.inValidMessages.length > 0) {
                 msg = csvData.inValidMessages;
-            } else if (e.response) {
-                if (e.response.status >= 400 && e.response.status < 500) {
-                    er = "validation failed";
-                } else {
-                    er = "Please Try Again Later";
-                }
             } else {
                 er = "Please Try Again Later";
             }
-
-            this.setState(() => ({ inValidMessages: msg, error: er }));
+            this.setState(() => ({
+                inValidMessages: msg,
+                error: er,
+                uploading: false,
+            }));
         }
+        this.setState(() => ({ uploading: false }));
     };
     render() {
         return (
@@ -63,44 +61,67 @@ class Page2 extends React.Component {
                     <h1 className="heading111">Update Hostel Details</h1>
                 )}
                 <div>
-                    <h3 className="page2.1">Upload .csv file here...</h3>
+                    <h3 className="page2.1">Upload CSV file here...</h3>
                 </div>
-                {this.state.error && (
-                    <p className="errorshow">{this.state.error}</p>
-                )}
                 <div className="overflowcontrol">
                     <div className="widthsetting">
                         {" "}
                         <p>
-                            column headers must be same as provided{" "}
-                            <b>Userid</b>,<b>Email</b>,<b>Name</b>,<b>Rank</b>,
-                            <b>Disable</b>
+                            Column Headers in the file to be uploaded must be in
+                            the form as:
+                            <br /> <b>rollNo</b>,<b>Email</b>,<b>Name</b>,
+                            <b>Rank</b>,<b>Disable</b>
                         </p>
-                        {this.props.uploaded && (
-                            <p>you have already uploaded the CSV</p>
+                        {this.props.uploaded && !this.state.uploading && (
+                            <p className="updated-status">
+                                You have uploaded the CSV File.
+                            </p>
                         )}
-                        <form
-                            className="container"
-                            onSubmit={this.handleupload}
-                        >
-                            <input type="file" name="csvData" accept=".csv" />
-                            <input type="submit" value="Upload" />
-                        </form>{" "}
+                        {this.state.error && (
+                            <p className="errorshow">{this.state.error}</p>
+                        )}
                         {this.state.inValidMessages.length > 0 &&
                             this.state.inValidMessages.map((msg, index) => (
                                 <h3 className="errorshow" key={index}>
                                     {msg}
                                 </h3>
                             ))}
+                        <form
+                            className="container"
+                            onSubmit={this.handleupload}
+                        >
+                            <div className="uploadflex">
+                                <input
+                                    className="choosefile"
+                                    type="file"
+                                    name="csvData"
+                                    accept=".csv"
+                                    required={true}
+                                />
+                                <input
+                                    disabled={this.state.uploading}
+                                    className="uploadfile"
+                                    type="submit"
+                                    value={
+                                        !this.state.uploading
+                                            ? "Upload"
+                                            : "Uploading..."
+                                    }
+                                />
+                            </div>
+                        </form>{" "}
                         <button
                             className="csvbuttons"
                             onClick={this.props.prevStep}
+                            disabled={this.state.uploading}
                         >
                             Back
                         </button>
                         <button
                             className="csvbuttons"
-                            disabled={!this.props.uploaded}
+                            disabled={
+                                !this.props.uploaded || this.state.uploading
+                            }
                             onClick={this.props.nextStep}
                         >
                             Next

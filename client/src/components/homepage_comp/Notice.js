@@ -15,7 +15,9 @@ class Notice extends React.Component {
 
     componentDidMount = async () => {
         try {
-            const data = await axios.get("/api/getNotification");
+            const data = await axios.get(
+                "https://hostel-allotment-api.herokuapp.com/getNotification"
+            );
             // console.log(data.data);
             const s = [];
             data.data.forEach((d) => {

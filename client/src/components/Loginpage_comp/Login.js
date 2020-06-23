@@ -40,7 +40,10 @@ class Login extends React.Component {
             }
 
             // authenticating credentials from backend
-            const Data = await axios.post("/api/signin", credential);
+            const Data = await axios.post(
+                "https://hostel-allotment-api.herokuapp.com/signin",
+                credential
+            );
             this.props.authenticated(Data.data);
             this.setRedirect();
         } catch (e) {

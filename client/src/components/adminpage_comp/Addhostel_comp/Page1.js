@@ -13,6 +13,7 @@ class Page1 extends React.Component {
             disabledRoomRange: this.props.values.disabledRoomRange,
             wrapAround: this.props.values.wrapAround,
             errormessage: "",
+            saveAndNext: false,
         };
     }
 
@@ -29,6 +30,7 @@ class Page1 extends React.Component {
 
     saveAndContinue = async (e) => {
         e.preventDefault();
+        this.setState(() => ({ saveAndNext: true }));
         const elements = e.target.elements;
         const hostelData = {};
         hostelData.hostelName = elements.hostelName.value.trim();
@@ -36,7 +38,6 @@ class Page1 extends React.Component {
         hostelData.roomRange = elements.roomRange.value.trim();
         hostelData.disabledRoomRange = elements.disabledRoomRange.value.trim();
         hostelData.wrapAround = elements.wrapAround.value === "true";
-
         try {
             validateRange(hostelData.roomRange, "Room Range");
             if (hostelData.disabledRoomRange) {
@@ -66,13 +67,14 @@ class Page1 extends React.Component {
                 ) {
                     //call axios to update data of existing hostel
                     console.log("I am from existing");
-                    const url = `/api/admin/${this.props.values.id}`;
+                    const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.values.id}`;
                     await axios.patch(url, hostelData, config);
                 }
             } else {
                 //call axios to add the data of new hostel
                 console.log("I am from new");
-                const url = "/api/admin/hostel";
+                const url =
+                    "https://hostel-allotment-api.herokuapp.com/admin/hostel";
                 const data = await axios.post(url, hostelData, config);
 
                 hostelData.id = data.data._id;
@@ -80,13 +82,12 @@ class Page1 extends React.Component {
 
             this.props.handleChange(hostelData);
             this.props.nextStep();
-            this.setState(() => ({ errormessage: "" }));
         } catch (e) {
             let msg = "";
             if (e.response) {
                 const error = e.response;
                 if (error.status >= 400 && error.status < 500) {
-                    msg = "validation failed";
+                    msg = "provided hostel name already exists";
                 } else {
                     msg = "Please Try Again Later";
                 }
@@ -96,7 +97,7 @@ class Page1 extends React.Component {
                         ? "Please Try Again Later"
                         : e.message;
             }
-            this.setState(() => ({ errormessage: msg }));
+            this.setState(() => ({ errormessage: msg, saveAndNext: false }));
         }
     };
     handleChange = (e) => {
@@ -113,16 +114,18 @@ class Page1 extends React.Component {
                 ) : (
                     <h1 className="heading111">Update Hostel Details</h1>
                 )}
-                {this.state.errormessage && (
-                    <p className="errorshow">{this.state.errormessage}</p>
-                )}
                 <h4>Enter Hostel Details</h4>
                 <form
                     className="overflowcontrol"
                     onSubmit={this.saveAndContinue}
                 >
+                    {this.state.errormessage && (
+                        <p className="errorshow">{this.state.errormessage}</p>
+                    )}
                     <div className="widthsetting">
-                        <p className="addhostellabels">Hostel Name</p>
+                        <p className="addhostellabels">
+                            Hostel Name<span className="red">*</span>
+                        </p>
                         <input
                             className="hosteldetails"
                             type="text"
@@ -147,7 +150,8 @@ class Page1 extends React.Component {
                             <option value="6">6 persons</option>
                         </select>
                         <p className="addhostellabels">
-                            Rooms Range (eg. G1-G8, F1-F5, F7)
+                            Rooms Range<span className="red">*</span> (eg.
+                            G1-G8, F1-F5, F7)
                         </p>
                         <input
                             className="hosteldetails"
@@ -185,6 +189,7 @@ class Page1 extends React.Component {
                                 type="submit"
                                 name="submit"
                                 value="Save and Next"
+                                disabled={this.state.saveAndNext}
                             />
                         </p>
                     </div>

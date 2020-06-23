@@ -27,7 +27,8 @@ class Passwordreset extends React.Component {
 
             //backend call
 
-            const url = "/api/forgetPassword";
+            const url =
+                "https://hostel-allotment-api.herokuapp.com/forgetPassword";
             const credential = {};
             credential.email = email;
 
@@ -60,7 +61,7 @@ class Passwordreset extends React.Component {
 
         // backend call
 
-        const url = "/api/forgetPassword";
+        const url = "https://hostel-allotment-api.herokuapp.com/forgetPassword";
         const credential = {};
         credential.email = this.state.Email;
         const data = await axios.post(url, credential);
@@ -81,7 +82,7 @@ class Passwordreset extends React.Component {
         this.setState(() => ({ disablePage2a: true }));
         // backend call
 
-        const url = "/api/otpVerify";
+        const url = "https://hostel-allotment-api.herokuapp.com/otpVerify";
         const credential = {};
         credential.email = this.state.Email;
         credential.OTP = parseInt(e.target.elements.otp.value);
@@ -126,7 +127,8 @@ class Passwordreset extends React.Component {
 
             // backend call
 
-            const url = "/api/changePassword";
+            const url =
+                "https://hostel-allotment-api.herokuapp.com/changePassword";
             const credential = {};
             credential.email = this.state.Email;
             credential.newPassword = x;
@@ -158,10 +160,7 @@ class Passwordreset extends React.Component {
                 </p>
                 <div>
                     {this.state.error && (
-                        <div className="error-box">
-                            <span className="error-sign">!</span>
-                            <p className="error-content">{this.state.error}</p>
-                        </div>
+                        <p className="errorshow">{this.state.error}</p>
                     )}
                     <form
                         className="form-box"
@@ -170,7 +169,7 @@ class Passwordreset extends React.Component {
                             event.which === 13 && event.preventDefault()
                         }
                     >
-                        <div className="color-x">
+                        <div className="margin-top">
                             <input
                                 className="input-email"
                                 type="text"

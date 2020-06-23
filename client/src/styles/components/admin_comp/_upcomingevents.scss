@@ -1,10 +1,10 @@
-.upcominginfo {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
+.emptyUpcoming {
+    margin: auto;
+    font-size: 40px;
+    margin-top: 140px;
 }
-.italic {
-  padding-top: 10px;
-  font-size: 15px;
-  font-style: italic;
+@media (max-width: 720px) {
+    .emptyUpcoming {
+        font-size: 30px;
+    }
 }

@@ -17,9 +17,11 @@
   //overflow-y: auto;
 }
 .heading111 {
+  margin-top: 2px;
   border-bottom: 2px solid rgb(0, 0, 0);
   font-size: 40px;
   font-family: "Piedra", cursive;
+  font-weight: lighter;
 }
 
 .overflowcontrol {
@@ -35,7 +37,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-left: 0px;
+  //margin-left: 0px;
 }
 .allheadings {
   background-color: #d6d6d6;

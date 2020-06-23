@@ -29,7 +29,9 @@ class AppRouter extends React.Component {
             try {
                 this.setState(() => ({ refresh: true }));
                 const userData = JSON.parse(localStorage.getItem("userData"));
-                const url = `/api/${userData.admin ? "admin" : "user"}`;
+                const url = `https://hostel-allotment-api.herokuapp.com/${
+                    userData.admin ? "admin" : "user"
+                }`;
                 const config = { headers: { Authorization: userData.token } };
                 const data = await axios.get(url, config);
                 data.data.vacantRooms &&
@@ -85,7 +87,9 @@ class AppRouter extends React.Component {
         //logging out from backend
         try {
             const token = JSON.parse(localStorage.getItem("userData")).token;
-            const url = `/api/${this.state.isAdmin ? "admin" : "user"}/logout`;
+            const url = `https://hostel-allotment-api.herokuapp.com/${
+                this.state.isAdmin ? "admin" : "user"
+            }/logout`;
 
             await axios.get(url, {
                 headers: {

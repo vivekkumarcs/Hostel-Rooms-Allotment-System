@@ -34,13 +34,17 @@ export default class ChangeAdminpassword extends React.Component {
             credential.newPassword = newPassword;
 
             // calling the backend to change the password
-            await axios.patch("/api/admin/changePassword", credential, {
-                headers: {
-                    Authorization:
-                        "Bearer " +
-                        JSON.parse(localStorage.getItem("userData")).token,
-                },
-            });
+            await axios.patch(
+                "https://hostel-allotment-api.herokuapp.com/admin/changePassword",
+                credential,
+                {
+                    headers: {
+                        Authorization:
+                            "Bearer " +
+                            JSON.parse(localStorage.getItem("userData")).token,
+                    },
+                }
+            );
             this.setState(() => ({ error: "password changed successfully" }));
             e.target.elements.prevPassword.value = "";
             e.target.elements.newPassword.value = "";

@@ -34,7 +34,8 @@ export default class ChangeAdminpassword extends React.Component {
             credential.newPassword = newPassword;
 
             // calling the backend to change the password
-            const url = "/api/user/changePassword";
+            const url =
+                "https://hostel-allotment-api.herokuapp.com/user/changePassword";
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))

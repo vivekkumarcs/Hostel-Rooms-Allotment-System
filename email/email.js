@@ -28,6 +28,7 @@ const sendUserDetails = (receiverEmail, userid, password, name) => {
                         <div>
                             <b>password: </b>${password}
                         </div>
+                        <p>To visit our web app <a href="https://hostel-rooms-allotment-system.herokuapp.com/">click here</a></p>
                         <br>
                         <footer style = 'opacity : 60%;text-align: justify-content;'>
                             If any one of your hostel didn't get this email. Inform them to contact to their hostel warden.
@@ -50,7 +51,8 @@ const sendBulk = async (personalizations) => {
                     <div>
                         <b>password: </b>-password-
                     </div>
-                    <br>
+                    <p>To visit our web app <a href="https://hostel-rooms-allotment-system.herokuapp.com/">click here</a></p>
+                        <br>
                     <footer style = 'opacity : 60%;text-align: justify-content;'>
                         If any one of your hostel didn't get this email. Inform them to contact to their hostel warden.
                     </footer>

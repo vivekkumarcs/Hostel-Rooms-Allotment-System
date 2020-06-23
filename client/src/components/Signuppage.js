@@ -16,6 +16,7 @@ class Signup extends React.Component {
         const email = e.target.elements.email.value.trim();
         const password = e.target.elements.password.value;
         const rPassword = e.target.elements.rPassword.value;
+        const uniqueKey = e.target.elements.uniqueKey.value;
         const credential = {};
         try {
             const re = /^[A-Za-z0-9]{8,15}$/;
@@ -27,7 +28,9 @@ class Signup extends React.Component {
             credential.name = firstName;
             credential.email = email;
             credential.password = password;
-            const Data = await axios.post("/api/signup", credential);
+            credential.uniqueKey = uniqueKey;
+            const url = "https://hostel-allotment-api.herokuapp.com/signup";
+            const Data = await axios.post(url, credential);
             this.props.authenticated(Data.data);
         } catch (e) {
             let msg = "";
@@ -39,11 +42,14 @@ class Signup extends React.Component {
                     msg = "Please Try Again Later";
                 }
             } else {
-                msg = e.message;
+                msg = "Please Try Again Later";
             }
-            this.setState(() => ({ error: msg }));
+            this.setState(() => ({
+                error: msg,
+                disabled: false,
+                modalshow: undefined,
+            }));
         }
-        this.setState(() => ({ disabled: false, modalshow: undefined }));
     };
     render() {
         return (
@@ -52,98 +58,117 @@ class Signup extends React.Component {
                 <div className="signupflex2">
                     <h2 className="singuptag">
                         <img className="signupicon" src={pic} alt="" />
-                        Sign Up Now
+                        Admin Sign Up
                     </h2>
-                    <form className="form" onSubmit={this.submitSignup}>
+                    <div className="mobileformview">
                         {this.state.error && (
                             <p className="errorshow">{this.state.error}</p>
                         )}
-                        <div className="signupalign">
-                            <div className="bringdown">
-                                <label htmlFor="firstName1">Name</label>
-                                <label className="red">*</label>
+                        <form className="form" onSubmit={this.submitSignup}>
+                            <div className="signupalign">
+                                <div className="bringdown">
+                                    <label htmlFor="firstName1">Name</label>
+                                    <label className="red">*</label>
+                                </div>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    placeholder="name"
+                                    required={true}
+                                />
                             </div>
-                            <input
-                                type="text"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="name"
-                                required={true}
-                            />
-                        </div>
 
-                        <div className="signupalign">
-                            <div className="bringdown">
-                                <label htmlFor="emailid">Email</label>
-                                <label className="red">*</label>
+                            <div className="signupalign">
+                                <div className="bringdown">
+                                    <label htmlFor="emailid">Email</label>
+                                    <label className="red">*</label>
+                                </div>
+                                <input
+                                    placeholder="email"
+                                    type="email"
+                                    id="emailid"
+                                    name="email"
+                                    required={true}
+                                />
                             </div>
-                            <input
-                                placeholder="email"
-                                type="email"
-                                id="emailid"
-                                name="email"
-                                required={true}
-                            />
-                        </div>
-
-                        <div className="signupalign">
-                            <div className="bringdown">
-                                {" "}
-                                <label htmlFor="password_id">Password</label>
-                                <label className="red">*</label>
+                            <div className="signupalign">
+                                <div className="bringdown">
+                                    <label htmlFor="uniqueKey">
+                                        Unique Key
+                                    </label>
+                                    <label className="red">*</label>
+                                </div>
+                                <input
+                                    placeholder="Unique Key"
+                                    type="text"
+                                    id="uniqueKey"
+                                    name="uniqueKey"
+                                    required={true}
+                                />
                             </div>
-                            <input
-                                type="password"
-                                id="password_id"
-                                name="password"
-                                placeholder="password"
-                                required={true}
-                                minLength={8}
-                                maxLength={15}
-                            />
-                        </div>
 
-                        <div className="signupalign">
-                            <div className="bringdown">
-                                {" "}
-                                <label htmlFor="retypePassword_id">
-                                    Confirm Password
+                            <div className="signupalign">
+                                <div className="bringdown">
+                                    {" "}
+                                    <label htmlFor="password_id">
+                                        Password
+                                    </label>
+                                    <label className="red">*</label>
+                                </div>
+                                <input
+                                    type="password"
+                                    id="password_id"
+                                    name="password"
+                                    placeholder="password"
+                                    required={true}
+                                    minLength={8}
+                                    maxLength={15}
+                                />
+                            </div>
+
+                            <div className="signupalign">
+                                <div className="bringdown">
+                                    {" "}
+                                    <label htmlFor="retypePassword_id">
+                                        Confirm Password
+                                    </label>
+                                    <label className="red">*</label>
+                                </div>
+                                <input
+                                    type="password"
+                                    id="retypePassword_id"
+                                    name="rPassword"
+                                    placeholder="confirm password"
+                                    required={true}
+                                    minLength={8}
+                                    maxLength={15}
+                                />
+                            </div>
+                            <div className="term">
+                                <input
+                                    type="checkbox"
+                                    id="term_id"
+                                    name="checkbox"
+                                    required={true}
+                                />
+                                <label className="terms" htmlFor="term_id">
+                                    I accept the terms of Use & Privacy Policy
                                 </label>
-                                <label className="red">*</label>
+                                <br />
                             </div>
-                            <input
-                                type="password"
-                                id="retypePassword_id"
-                                name="rPassword"
-                                placeholder="confirm password"
-                                required={true}
-                                minLength={8}
-                                maxLength={15}
-                            />
-                        </div>
-                        <div className="term">
-                            <input
-                                type="checkbox"
-                                id="term_id"
-                                name="checkbox"
-                                required={true}
-                            />
-                            <label className="terms" htmlFor="term_id">
-                                I accept the terms of Use & Privacy Policy
-                            </label>
-                            <br />
-                        </div>
-                        <div className="marginsetsignup">
-                            {" "}
-                            <input
-                                type="submit"
-                                id="create_an_Account"
-                                name="submit"
-                                value="Create Account"
-                                disabled={this.state.disabled}
-                            />
-                        </div>
-                    </form>
+                            <div className="marginsetsignup">
+                                {" "}
+                                <input
+                                    type="submit"
+                                    id="create_an_Account"
+                                    name="submit"
+                                    value="Create Account"
+                                    disabled={this.state.disabled}
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         );

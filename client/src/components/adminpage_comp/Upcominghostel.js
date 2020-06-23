@@ -13,7 +13,8 @@ class Upcomingevents extends React.Component {
     componentDidMount = async () => {
         this.setState(() => ({ modalshow: true }));
         try {
-            const url = "/api/admin/hostels?final=true";
+            const url =
+                "https://hostel-allotment-api.herokuapp.com/admin/hostels?final=true";
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))
@@ -32,7 +33,7 @@ class Upcomingevents extends React.Component {
     handleDeleteOption = async (e) => {
         try {
             if (e.target.id === "yes") {
-                const url = `/api/admin/${this.state.selectedOptionId}/discard`;
+                const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.state.selectedOptionId}/discard`;
                 const config = {
                     headers: {
                         Authorization: JSON.parse(
@@ -76,21 +77,25 @@ class Upcomingevents extends React.Component {
                 <p>Here you can cancel the scheduled allotments of hostels.</p>
                 <div className="overflowcontrol">
                     {this.state.hostels.length === 0 && (
-                        <p className="errorshow">! No Hostels added yet</p>
+                        <p className="errorshow emptyUpcoming">
+                            ! No Upcoming Allotments
+                        </p>
                     )}
 
                     <div className="divcurrenthostels">
                         {this.state.hostels.map((hostel, index) => (
                             <div key={index}>
                                 <div className="currenthostels">
-                                    <div className="upcominginfo">
-                                        <div>
-                                            {index + 1}. {hostel.name}
+                                    <div>
+                                        <div style={{ textAlign: "center" }}>
+                                            <b>{hostel.name}</b>
                                         </div>
-                                        <div className="italic">
-                                            Allotment will be conducted on{" "}
-                                            {this.getDate(hostel.Date)}
-                                        </div>
+                                        <p style={{ textAlign: "center" }}>
+                                            <i>
+                                                Allotment will be conducted on{" "}
+                                                {this.getDate(hostel.Date)}
+                                            </i>
+                                        </p>
                                     </div>
                                     <div>
                                         <button
@@ -105,7 +110,7 @@ class Upcomingevents extends React.Component {
                                                 );
                                             }}
                                         >
-                                            Cancel
+                                            Cancel Allotment
                                         </button>
                                     </div>
                                 </div>

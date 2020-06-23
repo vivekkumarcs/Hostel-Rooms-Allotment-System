@@ -316,13 +316,11 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
         }
 
         const todaysDate = getCurrentLocalTime();
-        // const providedDate = new Date(req.body.Date).setHours(0, 0, 0, 0);
         const x = new Date(req.body.Date);
         let providedDate = x.getTime();
         let offset = x.getTimezoneOffset();
         providedDate += -1 * offset * 60000;
         providedDate += -1 * 330 * 60000;
-        // providedDate = new Date(providedDate).setHours(0, 0, 0, 0);
 
         // if (providedDate <= todaysDate) {
         //     throw new Error("Date must be greater than current Date");
@@ -346,7 +344,6 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
         const users = await Hostel.populate({
             path: "users",
         }).execPopulate();
-        // console.log(users);
         const personalizations = [];
         for (User of users.users) {
             let password = randomPassword(8);
@@ -363,9 +360,7 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
                     password: password,
                 },
             });
-            // sendUserDetails(User.email, User.userid, password, User.name);
         }
-        // console.log(personalizations);
         sendBulk(personalizations);
         res.send();
     } catch (e) {

@@ -6,15 +6,27 @@ export default class YourInfo extends React.Component {
         return (
             <div>
                 <h1 className="heading111">User Information </h1>
-                <div className="userinfoflex">
-                    <div className="overflowcontrol">
-                        <div className="spacing">
-                            <h4>Hello {details.name}</h4>
-                            <p>Your Email : {details.email}</p>
-                            <p>Your Rank : {details.rank}</p>
-                            <p>your room allotment is under process</p>
+                <div className="overflowcontrol">
+                    <div className="center-Box">
+                        <div className="main-contentBox">
+                            <p><span className="bold-Heading">Name : </span><span className="bold-Heading2">{details.name.toUpperCase()}</span></p>
+                            <p><span className="bold-Heading">Roll No : </span><span className="bold-Heading2">{details.rollNo}</span></p>
+                            <p><span className="bold-Heading">Email : </span>{details.email}</p>
+                            <p><span className="bold-Heading">Rank : </span>{details.rank}</p>
+                            <p><span className="bold-Heading">Hostel : </span>{details.hostelName.toUpperCase()}</p>
+                            {!!details.DATE && <p><span className="bold-Heading">Allotment Schedule:</span>{details.DATE}</p>}
+                            <p className="bold-Heading3">Timings : </p>
+                            <p className="margin-Left"><span className="bold-Heading">Round-1 : </span>8:00 AM (3:00 hours) </p>
+                            <p className="margin-Left"><span className="bold-Heading">Round-2 : </span>1:00 PM (2:00 hours) </p>
+                            <p className="bold-Heading3">Result Declare :</p>
+                            <p className="margin-Left"><span className="bold-Heading">Round-1: </span>11:30AM</p>
+                            <p className="margin-Left"><span className="bold-Heading">Round-2: </span>03:30PM</p>
+
                         </div>
+
                     </div>
+                    <p className="Note-Part">If you are not satisfied with your room after Round-1,
+                            you can further apply (Duration: 30 min) for Round 2 in Allotment Status Section.</p>
                 </div>
             </div>
         );

@@ -4,50 +4,35 @@ import axios from "axios";
 class Page3 extends React.Component {
     state = {
         errormessage: "",
+        submitting: false,
     };
     saveAndContinue = async (e) => {
         e.preventDefault();
-
+        this.setState(() => ({ submitting: true }));
         //validating the date
+        const date = e.target.elements.date.value;
+        const current = new Date().setHours(0, 0, 0, 0);
+        const provided = new Date(date).setHours(0, 0, 0, 0);
 
-        let temp = new Date();
-        const curr = new Date(
-            temp.getFullYear(),
-            temp.getMonth(),
-            temp.getDate()
-        );
-        temp = new Date(e.target.elements.date.value);
-        const provided = new Date(
-            temp.getFullYear(),
-            temp.getMonth(),
-            temp.getDate()
-        );
         try {
-            if (provided.getTime() <= curr.getTime()) {
+            if (provided <= current) {
                 throw new Error("Date must be greater than current Date");
             }
 
             // send the date to backend using axios
-            const url = `/api/admin/${this.props.id}/finalSubmit`;
+            const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.id}/finalSubmit`;
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))
                         .token,
                 },
             };
-            const data = { Date: e.target.elements.date.value };
+            const data = { Date: date };
             await axios.post(url, data, config);
-
-            this.setState(() => ({ errormessage: "" }));
             this.props.nextStep();
         } catch (e) {
-            let msg = "";
-            if (e.message.toLowerCase() !== "network error") {
-                msg = e.message;
-            } else {
-                msg = "Please Try Again Later";
-            }
-            this.setState(() => ({ errormessage: msg }));
+            let msg = "Please try again later";
+            this.setState(() => ({ errormessage: msg, submitting: false }));
         }
     };
     render() {
@@ -66,8 +51,11 @@ class Page3 extends React.Component {
                         onSubmit={this.saveAndContinue}
                     >
                         <p>
-                            Provide the Date for allotment and final submit for
-                            processing.....
+                            <b>
+                                {" "}
+                                Provide the Date for allotment and final submit
+                                for processing.....
+                            </b>
                         </p>
                         {this.state.errormessage && (
                             <p className="errorshow">
@@ -82,15 +70,21 @@ class Page3 extends React.Component {
                         />
                         <p>
                             <button
-                                className="csvbuttons"
+                                className="datebuttons"
                                 onClick={this.props.prevStep}
+                                disabled={this.state.submitting}
                             >
                                 Back
                             </button>
                             <input
-                                className="csvbuttons"
+                                className="datebuttons"
                                 type="submit"
-                                value="Final Submit"
+                                disabled={this.state.submitting}
+                                value={
+                                    this.state.submitting
+                                        ? "Submitting"
+                                        : "Final Submit"
+                                }
                             />
                         </p>
                     </form>
