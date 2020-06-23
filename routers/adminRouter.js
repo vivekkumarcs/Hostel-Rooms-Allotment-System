@@ -337,6 +337,9 @@ router.post("/:hostelid/finalSubmit", adminAuth, async (req, res) => {
                 "please upload the CSV first / date has already submitted"
             );
         }
+        const users = await Hostel.populate({
+            path: "users",
+        }).execPopulate();
         // console.log(users);
         const personalizations = [];
         for (User of users.users) {
