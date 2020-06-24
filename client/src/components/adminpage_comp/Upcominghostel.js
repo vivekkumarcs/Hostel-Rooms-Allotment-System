@@ -73,7 +73,7 @@ class Upcomingevents extends React.Component {
         return (
             <div>
                 {this.state.modalshow && <ModalLoad />}
-                <h1 className="heading111">Upcoimg Allotments </h1>
+                <h1 className="heading111">Scheduled Allotments </h1>
                 <p>Here you can cancel the scheduled allotments of hostels.</p>
                 <div className="overflowcontrol">
                     {this.state.hostels.length === 0 && (

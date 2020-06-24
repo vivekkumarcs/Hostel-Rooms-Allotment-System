@@ -15,7 +15,7 @@ const _1130am = async () => {
         });
         for (const id of Hostel.users) {
             let User = await user.findById(id);
-            User.result = URmap[User.userid] ? URmap[User.userid] : "";
+            User.result = URmap[User.rollNo] ? URmap[User.rollNo] : "";
             await User.save();
         }
     }

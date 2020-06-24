@@ -23,11 +23,11 @@ const _330pm = async () => {
 
         for (const User of Hostel.users) {
             User.round = 2;
-            User.result = URmap[User.userid] ? URmap[User.userid] : "";
+            User.result = URmap[User.rollNo] ? URmap[User.rollNo] : "";
             await User.save();
         }
 
-        Hostel.round = 3;
+        // Hostel.round = 3;
         Hostel.editable = true;
         await Hostel.save();
     }
@@ -36,22 +36,29 @@ const _330pm = async () => {
     for (const Hostel of Hostels) {
         let hostelData = await hostel.findOne({ _id: Hostel._id }).populate({
             path: "users",
-            select: {
-                userid: 1,
-                name: 1,
-                result: 1,
-            },
+            // select: {
+            //     userid: 1,
+            //     name: 1,
+            //     result: 1,
+            // },
             options: {
                 sortby: {
-                    userid: 1,
+                    rollNo: 1,
                 },
             },
         });
 
         let users = hostelData.users.map((user) => [user.rollNo, user.result]);
+        for (User of hostelData.users) {
+            User.round = 3;
+            await User.save();
+        }
         let d = new Date(hostelData.Date);
         let date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+        console.log(users);
         await generatePDF(Hostel.name, date, users);
+        Hostel.round = 3;
+        await Hostel.save();
     }
 };
 module.exports = _330pm;

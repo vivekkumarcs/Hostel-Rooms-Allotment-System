@@ -214,7 +214,7 @@ class Adminpage extends React.Component {
                                     }
                                     onClick={this.current}
                                 >
-                                    Current Hostels
+                                    Hostels List
                                 </button>
                                 <button
                                     className={
@@ -224,7 +224,7 @@ class Adminpage extends React.Component {
                                     }
                                     onClick={this.upcoming}
                                 >
-                                    Next Allotments
+                                    Scheduled Allotments
                                 </button>
                             </div>
                             {/*burger-menu ended*/}

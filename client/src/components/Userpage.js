@@ -200,7 +200,7 @@ class Userpage extends React.Component {
                                         this.node = node;
                                     }}
                                 >
-                                    Allotment Results
+                                    Allotment Status
                                 </button>
                             </div>
                         </div>

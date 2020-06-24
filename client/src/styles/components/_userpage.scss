@@ -1,370 +1,466 @@
 //user info
 .userinfoflex {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .userinfoflex2 {
-  padding: 10px;
-  color: rgb(0, 0, 0);
-  background-color: #dfdfdf;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    background-color: #dfdfdf;
 
-  border: none;
-  border-right: 2px solid #838383;
+    border: none;
+    border-right: 2px solid #838383;
 }
 .userinfoflex3 {
-  padding: 10px;
-  color: rgb(255, 255, 255);
+    padding: 10px;
+    color: rgb(255, 255, 255);
 
-  background-color: #047ae9e1;
+    background-color: #047ae9e1;
 
-  border: none;
+    border: none;
 }
 .spacing {
-  text-align: center;
-  padding-top: 60px;
+    text-align: center;
+    padding-top: 60px;
 }
 //change password style
 .Changepasstag {
-  text-decoration: underline;
-  text-align: center;
+    text-decoration: underline;
+    text-align: center;
 }
 .idretypePassword {
-  text-align: left;
+    text-align: left;
 }
 
 .formdiv {
-  margin: auto;
-  font-size: 15px;
-  font-style: oblique;
-  font-weight: lighter;
-  max-width: 320px;
+    margin: auto;
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: lighter;
+    max-width: 320px;
 }
 .float {
-  text-align: left;
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  padding: 8px;
-  //background-color: rgba(0, 0, 0, 0.082);
-  background-color:rgba(164, 122, 122, 0.00);
-  box-shadow: -2px -4px 4px #00000017 inset;
-  border: none;
-  border-bottom: 1px solid #000000;
+    text-align: left;
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    //background-color: rgba(0, 0, 0, 0.082);
+    background-color: rgba(164, 122, 122, 0);
+    box-shadow: -2px -4px 4px #00000017 inset;
+    border: none;
+    border-bottom: 1px solid #000000;
 }
 .setreset {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
 }
 .submitbuttonspace {
-  background-color: #0061a1;
-  color: #ffffff;
-  padding: 6px 18px 6px 18px;
+    background-color: #0061a1;
+    color: #ffffff;
+    padding: 6px 18px 6px 18px;
 
-  border: none;
-  box-shadow: 6px 6px 6px #0447949c;
+    border: none;
+    box-shadow: 6px 6px 6px #0447949c;
 }
 //pdf download
 .pdfflex {
-  margin: auto;
-  margin-bottom: 4px;
-  width: 440px;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #0051ff1e;
-  padding: 10px 0px 10px 0px;
+    margin: auto;
+    margin-bottom: 4px;
+    width: 440px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #0051ff1e;
+    padding: 10px 0px 10px 0px;
 }
 .pdflist {
-  margin: auto;
-  max-width: 360px;
+    margin: auto;
+    max-width: 360px;
 }
-//add preferences
+
+//disabled-add preferencees///////////////
+
+.inactive-msg {
+    position: absolute;
+    background-color: #ffffffa6;
+    width: 90%;
+    height: 300px;
+
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ff0000;
+    text-shadow: 0px 0px 16px #fdfdfd;
+    padding-top: 200px;
+}
+
+//add preferences//////////////////////////////////////////
+
+.addpreferencesheight {
+    height: 600px;
+}
+
 .addroom {
-  color: white;
-  font-size: 14px;
-  margin-top: 20px;
-  padding: 6px 16px 6px 16px;
-  background-color: #ff0a0a;
-  box-shadow: -2px -3px 10px #750101 inset;
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 10px 18px 10px 18px;
+    background-color: #ff0a0a;
+    box-shadow: -2px -3px 10px #750101 inset;
+    border: 1px solid #a50303;
 }
 .preferencesubmit {
-  color: white;
+    color: white;
 
-  font-size: 16px;
-  margin-top: 10px;
-  padding: 6px 20px 6px 20px;
-  background-color: #008b0c;
-  box-shadow: -2px -3px 10px #003802 inset;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 20px 10px 20px;
+    background-color: #008b0c;
+    box-shadow: -2px -3px 10px #003802 inset;
+    border: none;
 }
 .checksize {
-  padding: 5px;
+    padding: 5px;
 }
 .selectlimit {
-  width: 300px;
+    min-width: 300px;
+    max-width: 400px;
 }
 .preferenceflex {
-  display: flex;
-  flex-direction: row;
- // justify-content: space-between;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 320px;
 }
 .preferencelist {
-  max-width: 400px;
-  display: flex;
-  height: 90%;
-  flex-direction: column;
-  /* max-height: 250px; */
-  margin: auto;
-  overflow-y: auto;
-  padding: 20px;
-  background-color: #4d7dce38;
-  //background-color: #a1a1a138;
-  //box-shadow: 0px 0px 40px #34343571 inset;
-  box-shadow: 0px 0px 40px #3232e6c7 inset;
+    width: 360px;
+    display: flex;
+    height: 90%;
+    min-height: 200px;
+    flex-direction: column;
+    max-height: 260px;
+    margin: auto;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #4a9dfb23;
+    //background-color: #a1a1a138;
+    //box-shadow: 0px 0px 40px #34343571 inset;
+    box-shadow: 0px 0px 40px #0385ff77 inset;
+    -ms-overflow-style: none;
+}
+.preferencelist::-webkit-scrollbar {
+    display: none;
+}
+
+.preferenceflex1 {
+    margin: auto;
 }
 .msg {
-  margin-top: 0px;
-  text-align: center;
-  text-decoration: underline;
-  font-size: larger;
-  font-style: bold;
+    margin-top: 0px;
+    text-align: center;
+    text-decoration: underline;
+    font-size: larger;
+    font-style: bold;
 }
 .addroomform {
-  margin-top: 10px;
-  max-width: 450px;
-  height: 200px;
-  padding: 10px;
-  border: 2px solid #d8d8d8;
-  border-radius: 3px;
-  margin-bottom: 50px;
- // margin-left: -10%;
+    //margin: auto;
+    text-align: justify;
+    margin-top: 10px;
+    width: 380px;
+    height: 200px;
+    padding: 10px;
+    border: 2px solid #fdfdfd;
+    border-radius: 3px;
+    margin-bottom: 50px;
+    // margin-left: -10%;
 }
 .underlined {
-  text-decoration: wavy;
+    text-decoration: wavy;
 }
 .floor {
-  padding: 3px 6px 3px 6px;
-  width: 160px;
+    padding: 3px 6px 3px 6px;
+    width: 160px;
 }
 .selectroom {
-  width: auto;
-  min-width: 200px;
+    width: auto;
+    min-width: 200px;
 }
 .listname {
-  margin-top: 4px;
-  font-weight: bold;
-  text-align: center;
+    margin-top: 4px;
+    font-weight: bold;
+    text-align: center;
 }
 .roomoptions {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  //background: linear-gradient(to right, #8d8d8d, #8b8b8b0a);
-  background: linear-gradient(to right, #4a5bc0, #8b8b8b0a);
-  margin-bottom: 5px;
-  padding: 3px 5px 3px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //background: linear-gradient(to right, #8d8d8d, #8b8b8b0a);
+    background: linear-gradient(to right, #0077ffc4, #03a0fb3f);
+    margin-bottom: 5px;
+    padding: 3px 5px 3px 5px;
 }
 .movebuttonup {
-  padding: 10px 15px 10px 15px;
-  background-image: url("./up.png");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position-x: center;
-  margin-right: 10px;
+    padding: 10px 15px 10px 15px;
+    background-image: url("./up.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position-x: center;
+    margin-right: 10px;
 }
 .movebuttondown {
-  padding: 10px 15px 10px 15px;
-  background-position-x: center;
-  background-image: url("./down.png");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  margin-right: 10px;
+    padding: 10px 15px 10px 15px;
+    background-position-x: center;
+    background-image: url("./down.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    margin-right: 10px;
 }
 .movebuttoncancel {
-  padding: 10px 15px 10px 15px;
-  background-image: url("./cross.png");
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center;
-  background-size: 16px 16px;
-  margin-right: 10px;
+    padding: 10px 15px 10px 15px;
+    background-image: url("./cross.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 16px 16px;
+    margin-right: 10px;
 }
 
-.flex-column{
-  display:flex;
-  flex-direction: column;
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 .referenceinput {
-  width: 300px;
-  height: 25px;
-  text-align: center;
-  margin-right: 5px;
-  margin-bottom: 5px;
+    width: 200px;
+    height: 25px;
+    text-align: center;
+    margin-right: 25px;
+    margin-bottom: 5px;
+    background-color: #0000000a;
+    border: none;
+    padding: 6px;
+    box-shadow: -2px -2px 6px #00000041 inset;
 }
 
-
-
 .question-mark-button {
-  background: 0 0;
-  border: 0;
-  padding: 1px;
-  border-radius: 50%;
-  font-size: smaller;
-  color: black;
+    background: 0 0;
+    border: 0;
+    padding: 0px 16px 10px 16px;
+
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #005dc7;
+}
+.question-mark-button:active {
+    background: 0 0;
+    border: 0;
+    padding: 0px 16px 10px 16px;
+
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #f00800;
 }
 
 .content-button {
-  width: 25px;
-  margin-left: 3px;
-  position: relative;
-  top: 6px;
+    width: 25px;
+    margin-left: 3px;
+    position: relative;
+    top: 6px;
 }
 
-.room{
-  text-align: left;
-  // margin-left:8px;
+.room {
+    text-align: left;
+    // margin-left:8px;
 }
 
-.Flex-use-changes{
-  display:flex;
-  flex-direction: row-reverse;
+.overflowcontroluser {
+    padding-top: 10px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    background-image: linear-gradient(#0285ff31, #ffffff00, #0285ff31);
+    min-height: 360px;
+    margin-bottom: 30px;
 }
-.Width-50{
-  width:50%;
-  //margin-left: 5%;
+.vacantdiv {
+    margin: auto;
+    font-size: large;
+    width: 60%;
+}
+.Width-50 {
+    width: 40%;
+    //margin-left: 5%;
 }
 
-
-.margin-top10{
-  margin-top:8px;
+.margin-top10 {
+    margin-top: 8px;
 }
 
-//allotment result
+//allotment result////////////////////////////////////////
+
 .AllotmentResult > .heading {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
-.LargeSize{
-  font-size: x-large;
+.LargeSize {
+    font-size: x-large;
 }
 
 .heading > legend {
-  background-color: #000;
-  color: #fff;
-  padding: 5px 7px;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 7px;
 }
 
 .greenShow {
-  color: green;
+    color: green;
 }
 
 .bold-room {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .Apply-button {
-  font-size: medium;
-  font-weight: bold;
-  color: white;
-  border-radius: 8px;
-  background-color: rgb(1, 163, 69);
-  padding: 2px 4px;
-  transition-duration: 0.4s;
-  margin-top: 10px;
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    background-color: rgb(1, 163, 69);
+    padding: 2px 4px;
+    transition-duration: 0.4s;
+    margin-top: 10px;
 }
 .Apply-button:disabled {
-  opacity: 50%;
+    opacity: 50%;
 }
 
 /*disable add prefernces is now on*/
 
 .disabled-Add-prederences {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .disabled-Add-prederences > legend {
-  background-color: #000;
-  color: #fff;
-  padding: 5px 7px;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 7px;
 }
 
 /*end*/
 @media (max-width: 720px) {
-  .preferenceflex {
-    flex-direction: column;
-  }
-  .selectlimit {
-    width: 200px;
-  }
-  .pdfflex {
-    width: 340px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .pdflist {
-    max-width: 280px;
-  }
-  .userinfoflex2 {
-    padding: 8px 6px 8px 6px;
-  }
-  .userinfoflex3 {
-    padding: 8px 6px 8px 6px;
-  }
-  
+    .selectlimit {
+        width: 200px;
+    }
+    .pdfflex {
+        width: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .pdflist {
+        max-width: 280px;
+    }
+    .userinfoflex2 {
+        padding: 8px 6px 8px 6px;
+    }
+    .userinfoflex3 {
+        padding: 8px 6px 8px 6px;
+    }
 }
 
 //special-width
 @media (max-width: 960px) {
-  .preferenceflex {
-    flex-direction: column;
-  }
-  .selectlimit {
-    width: 200px;
-  }
-  .Flex-use-changes{
-    flex-direction: column;
-  }
-  .Width-50{
-    width:90%;
-  }
-  .Margin-10 {
-    margin-left: 0%;
-  }
-  .Margin-left {
-    margin-left: 20px;
-  }
-  .addroomform{
-    margin-left:0%;
-  }
-  .referenceinput {
-    //width: 300px;
-    height: 25px;
-    text-align: center;
-    margin-right: 5px;
-    margin-bottom: 5px;
-  }
-  .TextAlignentLeft{
-    text-align: left;;
-  }
-  .preferencelist {
-    max-width: 400px;
-    display: flex;
-    max-height: 250px;
-    flex-direction: column;
-    /* max-height: 250px; */
+    .inactive-msg {
+        position: absolute;
+        width: 100%;
+        height: 440px;
+        margin-left: -5px;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 200px;
+    }
+    .preferenceflex {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
+    }
+    .preferencelist {
+        width: 320px;
+        display: flex;
+
+        min-height: 200px;
+        flex-direction: column;
+        max-height: 280px;
+    }
+    .addroomform {
+        //margin: auto;
+        text-align: justify;
+        margin-top: 10px;
+        width: 340px;
+        height: 200px;
+        padding: 10px;
+        border: 2px solid #fdfdfd;
+        border-radius: 3px;
+        margin-bottom: 50px;
+        // margin-left: -10%;
+    }
+
+    .overflowcontroluser {
+        padding-top: 10px;
+        padding: 10px;
+        margin: auto;
+        margin-left: 0px;
+        text-align: center;
+        width: 95%;
+        min-height: 360px;
+        margin-bottom: 30px;
+    }
+    .selectlimit {
+        width: 200px;
+    }
+    .Flex-use-changes {
+        flex-direction: column;
+    }
+    .Width-50 {
+        width: 90%;
+    }
+    .Margin-10 {
+        margin-left: 0%;
+    }
+    .Margin-left {
+        margin-left: 20px;
+    }
+    .addroomform {
+        margin-left: 0%;
+    }
+    .referenceinput {
+        //width: 300px;
+        height: 25px;
+        text-align: center;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    .TextAlignentLeft {
+        text-align: left;
+    }
+}
+.vacantdiv {
     margin: auto;
-    overflow-y: auto;
-    padding: 20px;
-    background-color: #a1a1a138;
-    box-shadow: 0px 0px 40px #34343571 inset;
-  }
-}
-
-@media(max-width:960px){
-  .LargeSize{
     font-size: large;
-  }
-  
+    width: 90%;
 }
-
-
+.addpreferencesheight {
+    height: 600px;
+}
+@media (max-width: 960px) {
+    .LargeSize {
+        font-size: large;
+    }
+}

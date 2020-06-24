@@ -75,7 +75,7 @@ class Currenthostel extends React.Component {
         return (
             <div>
                 {this.state.modalshow && <ModalLoad />}
-                <h1 className="heading111">Current added hostels </h1>
+                <h1 className="heading111">Hostels List </h1>
                 <p>
                     Here you can delete, modify and schedule allotments for
                     current hostels

@@ -280,7 +280,7 @@ export default class AddPrefernces extends React.Component {
                         className="selectroom"
                         name="roomNo"
                         menuPlacement="auto"
-                        // menuPosition="fixed"
+                        menuPosition="fixed"
                         onChange={this.changeSelect}
                         value={this.state.value}
                         placeholder="Select Room"
@@ -338,10 +338,8 @@ export default class AddPrefernces extends React.Component {
         // console.log(this.state.rooms)
         // console.log(this.state.normalPreferences)
         return (
-            <div>
-                <h1 className="heading111">Add Preferences</h1>
-                <h2>Select your preferences</h2>
-                {/*className="heading111"*/}
+            <div className="addpreferencesheight">
+                <h1 className="heading111">Select your preferences</h1>
                 <h3>Current Round : {this.props.User.round}</h3>
                 {this.state.error && (
                     <Modal
@@ -363,72 +361,35 @@ export default class AddPrefernces extends React.Component {
                         </div>
                     </Modal>
                 )}
-
-                <div>
-                    {/*className="overflowcontrol"*/}
-                    {/*give the backgroundcolor in this div*/}
-                    <div className="Flex-use-changes">
-                        <div className="Width-50">
-                            {/*show list*/}
-                            <div className="preferencelist">
-                                {this.state.errormessage && (
-                                    <Modal
-                                        ariaHideApp={false}
-                                        isOpen={!!this.state.errormessage}
-                                        contentLabel="selected"
-                                        className="modal"
+                <div className="overflowcontroluser">
+                    <div className="vacantdiv">
+                        {this.props.User.round === 2 && (
+                            <div>
+                                <p>
+                                    <button
+                                        onClick={this.changeVacantModel}
+                                        className="question-mark-button"
                                     >
-                                        <p className="errorshow">
-                                            {this.state.errormessage}
-                                        </p>
-
-                                        <div>
-                                            <button
-                                                className="modalbutton"
-                                                id="yes"
-                                                onClick={this.handleModal2}
-                                            >
-                                                Ok
-                                            </button>
-                                        </div>
-                                    </Modal>
-                                )}
-                                {this.showMessage()}
-                                <span>{this.showOptions()}</span>
+                                        Check vacant rooms list
+                                        <img
+                                            src={logo}
+                                            className="content-button"
+                                            alt="?"
+                                        />
+                                        {/*&#10068;*/}
+                                    </button>
+                                </p>
+                                <OptionModal
+                                    vacantRooms={this.props.User.vacantRooms}
+                                    openVacantModal={this.state.openVacantModal}
+                                    changeVacantModel={this.changeVacantModel}
+                                />
                             </div>
-                            {/*showlist*/}
-                        </div>
-                        <div className="Width-50">
+                        )}
+                    </div>
+                    <div className="preferenceflex">
+                        <div className="preferenceflex1">
                             {" "}
-                            {this.props.User.round === 2 && (
-                                <div>
-                                    <p>
-                                        Check your vacant room
-                                        <button
-                                            onClick={this.changeVacantModel}
-                                            className="question-mark-button"
-                                        >
-                                            <img
-                                                src={logo}
-                                                className="content-button"
-                                                alt="?"
-                                            />
-                                            {/*&#10068;*/}
-                                        </button>
-                                    </p>
-                                    <OptionModal
-                                        vacantRooms={
-                                            this.props.User.vacantRooms
-                                        }
-                                        openVacantModal={
-                                            this.state.openVacantModal
-                                        }
-                                        changeVacantModel={
-                                            this.changeVacantModel
-                                        }
-                                    />
-                                </div>
-                            )}
                             <form
                                 className="addroomform"
                                 onSubmit={this.handleAddRoom}
@@ -454,11 +415,11 @@ export default class AddPrefernces extends React.Component {
                                 )}
                                 <div className="selectlimit">
                                     {" "}
-                                    <div className="margin-top10">
+                                    <div>
                                         {" "}
                                         Select floor No. : {this.showFloors()}
                                     </div>
-                                    <div className="margin-top10">
+                                    <div>
                                         Select Room No. : {this.showRooms()}
                                     </div>
                                     <input
@@ -469,52 +430,69 @@ export default class AddPrefernces extends React.Component {
                                     />
                                 </div>
                             </form>
-                            <div className="Margin-10">
-                                {
-                                    <h4 className="underlined">
-                                        {" "}
-                                        Fill the reference details (optional)
-                                    </h4>
-                                }
-                                {/*create a new form for referral and referee*/}
-                                <form onSubmit={this.sendAllValue}>
-                                    <div className="flex-column">
-                                        <input
-                                            type="text"
-                                            className="referenceinput"
-                                            placeholder="referral"
-                                            defaultValue={
-                                                this.props.User.referral
-                                            }
-                                            name="referral"
-                                        />
-                                        <input
-                                            type="text"
-                                            className="referenceinput"
-                                            placeholder="referee"
-                                            defaultValue={
-                                                this.props.User.referee
-                                            }
-                                            name="referee"
-                                        />
-                                    </div>
-                                    <p>
-                                        {" "}
-                                        <input
-                                            className="preferencesubmit"
-                                            type="submit"
-                                            name="Sumit"
-                                            value={
-                                                this.state.waiting
-                                                    ? "Submitting"
-                                                    : "Submit"
-                                            }
-                                        />
+                        </div>
+                        <div className="preferencelist">
+                            {this.state.errormessage && (
+                                <Modal
+                                    ariaHideApp={false}
+                                    isOpen={!!this.state.errormessage}
+                                    contentLabel="selected"
+                                    className="modal"
+                                >
+                                    <p className="errorshow">
+                                        {this.state.errormessage}
                                     </p>
-                                </form>
-                            </div>
+
+                                    <div>
+                                        <button
+                                            className="modalbutton"
+                                            id="yes"
+                                            onClick={this.handleModal2}
+                                        >
+                                            Ok
+                                        </button>
+                                    </div>
+                                </Modal>
+                            )}
+                            {this.showMessage()}
+                            <span>{this.showOptions()}</span>
                         </div>
                     </div>
+
+                    {
+                        <h4 className="underlined">
+                            {" "}
+                            Fill the reference details (optional)
+                        </h4>
+                    }
+                    {/*create a new form for referral and referee*/}
+                    <form onSubmit={this.sendAllValue}>
+                        <input
+                            type="text"
+                            className="referenceinput"
+                            placeholder="referral"
+                            defaultValue={this.props.User.referral}
+                            name="referral"
+                        />
+                        <input
+                            type="text"
+                            className="referenceinput"
+                            placeholder="referee"
+                            defaultValue={this.props.User.referee}
+                            name="referee"
+                        />
+                        <p>
+                            {" "}
+                            <input
+                                className="preferencesubmit"
+                                type="submit"
+                                name="Sumit"
+                                value={
+                                    this.state.waiting ? "Submitting" : "Submit"
+                                }
+                            />
+                        </p>
+                    </form>
                 </div>
             </div>
         );

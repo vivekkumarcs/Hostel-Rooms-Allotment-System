@@ -15,7 +15,7 @@ export default class AllotmentResult extends React.Component {
         this.setState(() => ({
             round: this.props.User.round,
             editable: this.props.User.editable,
-            result: this.props.User.result ? this.props.User.result : "",
+            result: this.props.User.result,
             error:
                 this.props.User.round === 1 &&
                 !this.props.User.editable &&
@@ -30,9 +30,7 @@ export default class AllotmentResult extends React.Component {
     };
     applyForNextRound = async (e) => {
         e.preventDefault();
-        // this.setState(() => ({}));
         try {
-            if (this.props.User.nextRound) throw new Error();
             const url = "https://hostel-allotment-api.herokuapp.com/user/apply";
             const config = {
                 headers: {
@@ -40,18 +38,18 @@ export default class AllotmentResult extends React.Component {
                         .token,
                 },
             };
-            await axios.get(url, config);
+            !this.props.User.nextRound && (await axios.get(url, config));
             this.setState(() => ({
                 error: "you have successfully applied for next Round",
                 color: "green",
+                applied: false,
             }));
             this.props.appliedForNextRound();
         } catch (e) {
             this.setState(() => ({
-                error: this.props.User.nextRound
-                    ? "You have already applied for next round."
-                    : "please try again later",
+                error: "Please try again later",
                 color: "red",
+                applied: false,
             }));
         }
     };
@@ -63,6 +61,14 @@ export default class AllotmentResult extends React.Component {
                     Your have been alloted room{" "}
                     <span className="bold-room">{this.state.result}</span>
                 </p>
+                {this.state.error && (
+                    <p
+                        className="greenShow"
+                        style={{ color: this.state.color }}
+                    >
+                        {this.state.error}
+                    </p>
+                )}
                 {this.state.round === 1 && (
                     <form onSubmit={this.applyForNextRound}>
                         <label>
@@ -72,6 +78,11 @@ export default class AllotmentResult extends React.Component {
                                 name="wantround"
                                 onChange={this.handleChange}
                                 checked={this.state.applied}
+                                style={{
+                                    width: "17px",
+                                    height: "17px",
+                                    margin: "0px 10px 0px 0px",
+                                }}
                             />
                             <span id="wantroom">Apply for Round-2</span>
                         </label>
@@ -80,7 +91,7 @@ export default class AllotmentResult extends React.Component {
                                 type="submit"
                                 value="Apply"
                                 disabled={!this.state.applied}
-                                className="hosteldetailssave"
+                                className="csvbuttons"
                             />
                         </div>
                         <p>
@@ -135,25 +146,14 @@ export default class AllotmentResult extends React.Component {
     render() {
         return (
             <div className="AllotmentResult">
-                <h1 className="heading111">Your Room Status</h1>
-                {this.state.error && (
-                    <p
-                        className={
-                            this.state.color === "red"
-                                ? "errorshow"
-                                : "greenShow"
-                        }
-                    >
-                        {this.state.error}
-                    </p>
-                )}
+                <h1 className="heading111">Allotment Status</h1>
                 <div className="LargeSize" style={{ textAlign: "center" }}>
                     {this.handleShow()}
                 </div>
-                <p style={{ textAlign: "center" }}>
+                {/* <p style={{ textAlign: "center" }}>
                     To download PDF of result{" "}
                     <button className="csvbuttons">Click here</button>
-                </p>
+                </p> */}
             </div>
         );
     }

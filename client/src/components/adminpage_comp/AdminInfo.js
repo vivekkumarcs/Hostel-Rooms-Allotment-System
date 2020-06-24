@@ -20,39 +20,56 @@ export default class AdminInfo extends React.Component {
 
     handleDownload = async (hostelName) => {
         try {
-            const url = `https://hostel-allotment-api.herokuapp.com/admin/result?hostelName=${hostelName}`;
+            const url = `https://hostel-rooms-allotment-system.herokuapp.com/admin/result?hostelName=${hostelName}`;
             const userData = JSON.parse(localStorage.getItem("userData"));
             const config = {
-                responseType: "blob",
                 headers: {
                     Authorization: userData.token,
                     Accept: "application/pdf",
+                    // responseType: "blob",
                 },
             };
             const response = await axios.get(url, config);
-            const u = window.URL.createObjectURL(new Blob([response.data]));
+            console.log(response.data);
+            const downloadUrl = window.URL.createObjectURL(
+                new Blob([response.data])
+            );
+
             const link = document.createElement("a");
-            link.href = u;
-            link.setAttribute("download", "file.pdf"); //or any other extension
+
+            link.href = downloadUrl;
+
+            link.setAttribute("download", "file.pdf"); //any other extension
+
             document.body.appendChild(link);
+
             link.click();
+
+            link.remove();
+            // download(response.data, `${hostelName}.pdf`, "application/pdf");
             this.setState(() => ({ error: "" }));
         } catch (e) {
+            console.log(e);
             this.setState(() => ({ error: "!!! Please refresh the page" }));
         }
     };
     downloadList = (inbox) => {
         return inbox.map((hostelName, index) => (
-            <div className="pdfflex">
+            <div className="pdfflex" key={index}>
                 <div>
                     {" "}
-                    <p className="pdflist" key={index}>
-                        Download result of {hostelName}
+                    <p className="pdflist">
+                        Download result of <b>{hostelName}</b>
                     </p>
                 </div>
                 <div>
                     {" "}
-                    <button onClick={(e) => this.handleDownload(hostelName)}>
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            this.handleDownload(hostelName);
+                        }}
+                    >
                         download
                     </button>
                 </div>
