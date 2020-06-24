@@ -31,7 +31,7 @@ export default class AllotmentResult extends React.Component {
     applyForNextRound = async (e) => {
         e.preventDefault();
         try {
-            const url = "https://hostel-allotment-api.herokuapp.com/user/apply";
+            const url = "/api/user/apply";
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))

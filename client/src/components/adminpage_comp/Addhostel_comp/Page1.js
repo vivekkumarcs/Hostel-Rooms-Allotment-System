@@ -67,14 +67,13 @@ class Page1 extends React.Component {
                 ) {
                     //call axios to update data of existing hostel
                     console.log("I am from existing");
-                    const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.values.id}`;
+                    const url = `/api/admin/${this.props.values.id}`;
                     await axios.patch(url, hostelData, config);
                 }
             } else {
                 //call axios to add the data of new hostel
                 console.log("I am from new");
-                const url =
-                    "https://hostel-allotment-api.herokuapp.com/admin/hostel";
+                const url = "/api/admin/hostel";
                 const data = await axios.post(url, hostelData, config);
 
                 hostelData.id = data.data._id;

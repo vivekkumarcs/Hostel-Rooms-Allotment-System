@@ -23,7 +23,7 @@ class Page2 extends React.Component {
             }
             this.setState(() => ({ inValidMessages: [] }));
             //uploading the csv to server
-            const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.id}/upload`;
+            const url = `/api/admin/${this.props.id}/upload`;
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))

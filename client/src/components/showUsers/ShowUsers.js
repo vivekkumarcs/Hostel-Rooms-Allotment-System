@@ -27,7 +27,7 @@ class ShowUsers extends React.Component {
     componentDidMount = async () => {
         //console.log(this.state.hostelid);
         this.setState(() => ({ modalshow: true }));
-        const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.state.hostelid}/users?skip=0&limit=${this.state.limit}&sortBy=rank:asc`;
+        const url = `/api/admin/${this.state.hostelid}/users?skip=0&limit=${this.state.limit}&sortBy=rank:asc`;
         await this.loadData(url);
         this.setState(() => ({ modalshow: undefined }));
     };
@@ -50,11 +50,11 @@ class ShowUsers extends React.Component {
     };
 
     submitted = async (data) => {
-        const url = `https://hostel-allotment-api.herokuapp.com/admin/${
-            this.state.hostelid
-        }/users?skip=0&limit=${this.state.limit}&sortBy=${data.sortBy}:${
-            data.order
-        }${data.search ? "&" + data.search : ""}`;
+        const url = `/api/admin/${this.state.hostelid}/users?skip=0&limit=${
+            this.state.limit
+        }&sortBy=${data.sortBy}:${data.order}${
+            data.search ? "&" + data.search : ""
+        }`;
 
         const loaded = await this.loadData(url);
         if (loaded) {
@@ -69,7 +69,7 @@ class ShowUsers extends React.Component {
 
     pageChanged = async (pageNo) => {
         let skip = (pageNo - 1) * this.state.limit;
-        const url = `https://hostel-allotment-api.herokuapp.com/admin/${
+        const url = `/api/admin/${
             this.state.hostelid
         }/users?skip=${skip}&limit=${this.state.limit}&sortBy=${
             this.state.sortBy

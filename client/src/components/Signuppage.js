@@ -29,7 +29,7 @@ class Signup extends React.Component {
             credential.email = email;
             credential.password = password;
             credential.uniqueKey = uniqueKey;
-            const url = "https://hostel-allotment-api.herokuapp.com/signup";
+            const url = "/api/signup";
             const Data = await axios.post(url, credential);
             this.props.authenticated(Data.data);
         } catch (e) {
@@ -45,7 +45,10 @@ class Signup extends React.Component {
                     msg = "Please Try Again Later";
                 }
             } else {
-                msg = "Please Try Again Later";
+                msg =
+                    e.message === "Network Error"
+                        ? "Please check you internet connection"
+                        : e.message;
             }
             this.setState(() => ({
                 error: msg,

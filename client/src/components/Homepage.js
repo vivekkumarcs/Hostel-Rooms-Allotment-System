@@ -6,7 +6,7 @@ class Homepage extends React.Component {
         return (
             <div className="homeflex">
                 <div className="home-cotent-1">
-                    <h3>Welcome to hostel rooms allocation system</h3>
+                    <h3>Welcome to hostel room allotment system</h3>
                     <p>
                         (To get started, please login with your existing
                         credentials or you may signup as a new admin...)

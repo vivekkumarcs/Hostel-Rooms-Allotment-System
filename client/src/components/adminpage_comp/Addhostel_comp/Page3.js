@@ -20,7 +20,7 @@ class Page3 extends React.Component {
             // }
 
             // send the date to backend using axios
-            const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.props.id}/finalSubmit`;
+            const url = `/api/admin/${this.props.id}/finalSubmit`;
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))

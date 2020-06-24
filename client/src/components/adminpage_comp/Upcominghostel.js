@@ -13,8 +13,7 @@ class Upcomingevents extends React.Component {
     componentDidMount = async () => {
         this.setState(() => ({ modalshow: true }));
         try {
-            const url =
-                "https://hostel-allotment-api.herokuapp.com/admin/hostels?final=true";
+            const url = "/api/admin/hostels?final=true";
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))
@@ -33,7 +32,7 @@ class Upcomingevents extends React.Component {
     handleDeleteOption = async (e) => {
         try {
             if (e.target.id === "yes") {
-                const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.state.selectedOptionId}/discard`;
+                const url = `/api/admin/${this.state.selectedOptionId}/discard`;
                 const config = {
                     headers: {
                         Authorization: JSON.parse(

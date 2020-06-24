@@ -20,36 +20,13 @@ export default class AdminInfo extends React.Component {
 
     handleDownload = async (hostelName) => {
         try {
-            const url = `https://hostel-rooms-allotment-system.herokuapp.com/admin/result?hostelName=${hostelName}`;
+            const url = `/api/admin/result?hostelName=${hostelName}`;
             const userData = JSON.parse(localStorage.getItem("userData"));
-            const config = {
-                headers: {
-                    Authorization: userData.token,
-                    Accept: "application/pdf",
-                    // responseType: "blob",
-                },
-            };
-            const response = await axios.get(url, config);
-            console.log(response.data);
-            const downloadUrl = window.URL.createObjectURL(
-                new Blob([response.data])
-            );
+            const config = { headers: { Authorization: userData.token } };
+            await axios.get(url, config);
 
-            const link = document.createElement("a");
-
-            link.href = downloadUrl;
-
-            link.setAttribute("download", "file.pdf"); //any other extension
-
-            document.body.appendChild(link);
-
-            link.click();
-
-            link.remove();
-            // download(response.data, `${hostelName}.pdf`, "application/pdf");
             this.setState(() => ({ error: "" }));
         } catch (e) {
-            console.log(e);
             this.setState(() => ({ error: "!!! Please refresh the page" }));
         }
     };

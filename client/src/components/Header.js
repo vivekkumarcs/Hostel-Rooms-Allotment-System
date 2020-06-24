@@ -21,7 +21,7 @@ class Header extends React.Component {
                         <div>
                             {" "}
                             <div className="header01">
-                                Hostel Rooms Allotment System
+                                Hostel Room Allotment System
                             </div>
                         </div>
                     </div>

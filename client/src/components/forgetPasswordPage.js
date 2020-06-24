@@ -27,8 +27,7 @@ class Passwordreset extends React.Component {
 
             //backend call
 
-            const url =
-                "https://hostel-allotment-api.herokuapp.com/forgetPassword";
+            const url = "/api/forgetPassword";
             const credential = {};
             credential.email = email;
 
@@ -61,7 +60,7 @@ class Passwordreset extends React.Component {
 
         // backend call
 
-        const url = "https://hostel-allotment-api.herokuapp.com/forgetPassword";
+        const url = "/api/forgetPassword";
         const credential = {};
         credential.email = this.state.Email;
         const data = await axios.post(url, credential);
@@ -82,7 +81,7 @@ class Passwordreset extends React.Component {
         this.setState(() => ({ disablePage2a: true }));
         // backend call
 
-        const url = "https://hostel-allotment-api.herokuapp.com/otpVerify";
+        const url = "/api/otpVerify";
         const credential = {};
         credential.email = this.state.Email;
         credential.OTP = parseInt(e.target.elements.otp.value);
@@ -127,8 +126,7 @@ class Passwordreset extends React.Component {
 
             // backend call
 
-            const url =
-                "https://hostel-allotment-api.herokuapp.com/changePassword";
+            const url = "/api/changePassword";
             const credential = {};
             credential.email = this.state.Email;
             credential.newPassword = x;

@@ -16,8 +16,7 @@ class Currenthostel extends React.Component {
         //and store it to state
         this.setState(() => ({ modalshow: true }));
         try {
-            const url =
-                "https://hostel-allotment-api.herokuapp.com/admin/hostels";
+            const url = "/api/admin/hostels";
             const config = {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem("userData"))
@@ -42,7 +41,7 @@ class Currenthostel extends React.Component {
         try {
             if (e.target.id === "yes") {
                 // sending delete request
-                const url = `https://hostel-allotment-api.herokuapp.com/admin/${this.state.selectedOptionId}`;
+                const url = `/api/admin/${this.state.selectedOptionId}`;
                 const config = {
                     headers: {
                         Authorization: JSON.parse(
