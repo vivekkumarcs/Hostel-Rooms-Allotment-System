@@ -1,10 +1,5 @@
 import React from "react";
-import axios from "axios";
-import Option from "./options";
-import Select from "react-select";
 import Modal from "react-modal";
-import OptionModal from "./vacantRoomModel";
-import logo from "./../../styles/components/questionmark.png";
 
 export default class DisableAddPreferences extends React.Component {
     showFloors = () => {

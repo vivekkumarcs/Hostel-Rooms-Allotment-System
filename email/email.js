@@ -23,7 +23,7 @@ const sendUserDetails = (receiverEmail, userid, password, name) => {
     const html = `<div style = "padding: 0px, 10px;">
                         <p>hello ${name},</p>
                         <div>
-                            <b>Userid: </b>${userid}
+                            <b>Username: </b>${userid}
                         </div>
                         <div>
                             <b>password: </b>${password}
@@ -46,7 +46,7 @@ const sendBulk = async (personalizations) => {
     msg.html = `<div style = "padding: 0px, 10px;">
                     <p>hello -name-,</p>
                     <div>
-                        <b>Userid: </b>-userid-
+                        <b>Username: </b>-userid-
                     </div>
                     <div>
                         <b>password: </b>-password-

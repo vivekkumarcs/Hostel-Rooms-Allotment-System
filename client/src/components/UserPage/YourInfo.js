@@ -43,39 +43,49 @@ export default class YourInfo extends React.Component {
                                     ).toLocaleDateString()}
                                 </p>
                             )}
-                            <p className="bold-Heading3">Timings : </p>
-                            <p className="margin-Left">
-                                <span className="bold-Heading">Round-1 : </span>
-                                8:00 AM (3:00 hours){" "}
-                            </p>
-                            <p className="margin-Left">
-                                <span className="bold-Heading">Round-2 : </span>
-                                1:00 PM (2:00 hours){" "}
-                            </p>
-                            <p className="bold-Heading3">Result Declare :</p>
-                            <p className="margin-Left">
-                                <span className="bold-Heading">Round-1: </span>
-                                11:30AM
-                            </p>
-                            <p className="margin-Left">
-                                <span className="bold-Heading">Round-2: </span>
-                                03:30PM
-                            </p>
+                            {details.Date && (
+                                <div>
+                                    <p className="bold-Heading3">Timings : </p>
+                                    <p className="margin-Left">
+                                        <span className="bold-Heading">
+                                            Round-1 :{" "}
+                                        </span>
+                                        8:00 AM (3:00 hours){" "}
+                                    </p>
+                                    <p className="margin-Left">
+                                        <span className="bold-Heading">
+                                            Round-2 :{" "}
+                                        </span>
+                                        1:00 PM (2:00 hours){" "}
+                                    </p>
+                                    <p className="bold-Heading3">
+                                        Result Declare :
+                                    </p>
+                                    <p className="margin-Left">
+                                        <span className="bold-Heading">
+                                            Round-1:{" "}
+                                        </span>
+                                        11:30AM
+                                    </p>
+                                    <p className="margin-Left">
+                                        <span className="bold-Heading">
+                                            Round-2:{" "}
+                                        </span>
+                                        03:30PM
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     </div>
-                    <p className="Note-Part">
-                        If you are not satisfied with your room after Round-1,
-                        you can further apply (Duration: 30 min) for Round 2 in
-                        Allotment Status Section.
-                    </p>
+                    {details.Date && (
+                        <p className="Note-Part">
+                            If you are not satisfied with your room after
+                            Round-1, you can further apply (Duration: 30 min)
+                            for Round 2 in Allotment Status Section.
+                        </p>
+                    )}
                 </div>
             </div>
         );
     }
 }
-// <h1 className="heading111">User Info </h1>
-// <div className="userinfoflex">
-//     <div className="overflowcontrol">
-
-//     </div>
-// </div>
