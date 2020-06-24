@@ -280,7 +280,6 @@ export default class AddPrefernces extends React.Component {
                         className="selectroom"
                         name="roomNo"
                         menuPlacement="auto"
-                        menuPosition="fixed"
                         onChange={this.changeSelect}
                         value={this.state.value}
                         placeholder="Select Room"
@@ -394,7 +393,7 @@ export default class AddPrefernces extends React.Component {
                                 className="addroomform"
                                 onSubmit={this.handleAddRoom}
                             >
-                                {this.props.User.disabled && (
+                                {this.props.User.disabledQuota && (
                                     <p>
                                         <label>
                                             <input

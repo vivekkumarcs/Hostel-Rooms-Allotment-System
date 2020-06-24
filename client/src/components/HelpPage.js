@@ -102,7 +102,7 @@ class HelpPage extends React.Component {
                                 <br />
                                 Phone:{" "}
                                 <i>
-                                    +919680105260, +916393305189, +917272811262
+                                    +919680105260, +918175016618, +917272811262
                                 </i>
                             </p>
                         </div>
@@ -175,12 +175,13 @@ class HelpPage extends React.Component {
                                         <li>
                                             scheduling allotment(Providing
                                             allotment date. It must be provided
-                                            one day before the allotment day.)
+                                            atleast one day before the allotment
+                                            day.)
                                         </li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <h3>Currently added hostel</h3>
+                                    <h3>Currently added hostels</h3>
                                     In this section admin can see the list of
                                     all hostels that he/she has added till now.
                                     <br />
@@ -265,7 +266,7 @@ class HelpPage extends React.Component {
                                     times during the time of each round.
                                 </div>
                                 <div>
-                                    <h3>Allotment Result</h3>
+                                    <h3>Allotment Status</h3>
                                     Here User can see the status of allotment
                                     results after every round.
                                     <br />

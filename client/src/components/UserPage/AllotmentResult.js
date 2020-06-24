@@ -121,7 +121,7 @@ export default class AllotmentResult extends React.Component {
         if (this.state.result === null) {
             return (
                 <p>
-                    Round {this.state.round} result will be decleared at{" "}
+                    Round {this.state.round} result will be declared at{" "}
                     {this.state.round === 1 ? "11:30 AM" : "3:30 PM"}
                 </p>
             );
