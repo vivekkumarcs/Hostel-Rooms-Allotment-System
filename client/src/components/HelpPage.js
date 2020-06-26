@@ -121,6 +121,10 @@ class HelpPage extends React.Component {
                                 the one who controls the whole allotment process
                                 by providing allotment related details.
                                 <br />
+                                <div className="video">
+                                    <h3>Admin Guide</h3>
+                                    <iframe src="https://www.youtube.com/embed/h7Z3rF5CzmU"></iframe>
+                                </div>
                                 Admin can login using his/her Email_Id(username)
                                 and password in login page.
                                 <br />
@@ -221,6 +225,10 @@ class HelpPage extends React.Component {
                                 User is the candidate who is supposed to be
                                 alloted hostel rooms.
                                 <br />
+                                <div className="video">
+                                    <h3>User Guide</h3>
+                                    <iframe src="https://www.youtube.com/embed/f1gbQjKwx0Y"></iframe>
+                                </div>
                                 User can login using the login credentials
                                 received on his/her email_Id that has been
                                 provided by Admin.
