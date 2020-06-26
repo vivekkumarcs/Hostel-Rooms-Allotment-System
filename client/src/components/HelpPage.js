@@ -123,7 +123,10 @@ class HelpPage extends React.Component {
                                 <br />
                                 <div className="video">
                                     <h3>Admin Guide</h3>
-                                    <iframe src="https://www.youtube.com/embed/h7Z3rF5CzmU"></iframe>
+                                    <iframe
+                                        src="https://www.youtube.com/embed/h7Z3rF5CzmU"
+                                        allowFullScreen={true}
+                                    ></iframe>
                                 </div>
                                 Admin can login using his/her Email_Id(username)
                                 and password in login page.
@@ -227,7 +230,10 @@ class HelpPage extends React.Component {
                                 <br />
                                 <div className="video">
                                     <h3>User Guide</h3>
-                                    <iframe src="https://www.youtube.com/embed/f1gbQjKwx0Y"></iframe>
+                                    <iframe
+                                        src="https://www.youtube.com/embed/f1gbQjKwx0Y"
+                                        allowFullScreen={true}
+                                    ></iframe>
                                 </div>
                                 User can login using the login credentials
                                 received on his/her email_Id that has been
