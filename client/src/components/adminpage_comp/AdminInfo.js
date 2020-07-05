@@ -53,14 +53,20 @@ export default class AdminInfo extends React.Component {
                 </div>
                 <div>
                     {" "}
-                    <button
+                    <a
+                        href={`https://hostel-allotment-api.herokuapp.com/admin/result?hostelName=${hostelName}`}
+                        download={`${hostelName}-result.pdf`}
+                    >
+                        <button>Download</button>
+                    </a>
+                    {/* <button
                         onClick={(e) => {
                             e.preventDefault();
                             this.handleDownload(hostelName);
                         }}
                     >
                         download
-                    </button>
+                    </button> */}
                 </div>
             </div>
         ));
