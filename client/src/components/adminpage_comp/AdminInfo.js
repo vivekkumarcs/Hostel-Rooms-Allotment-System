@@ -4,44 +4,16 @@ import axios from "axios";
 export default class AdminInfo extends React.Component {
     state = {
         variable: 1,
-        error: "",
     };
 
     handleinfo = () => {
         this.setState(() => ({ variable: 1 }));
     };
-    handlepassword = () => {
+
+    handleresult = () => {
         this.setState(() => ({ variable: 2 }));
     };
 
-    handleresult = () => {
-        this.setState(() => ({ variable: 3 }));
-    };
-
-    handleDownload = async (hostelName) => {
-        try {
-            const url = `/api/admin/result?hostelName=${hostelName}`;
-            const userData = JSON.parse(localStorage.getItem("userData"));
-            const config = { headers: { Authorization: userData.token } };
-            const data = await axios.get(url, config);
-
-            const link = React.createElement(
-                "a",
-                { href: data, download: `${hostelName}-result.pdf` },
-                ""
-            );
-            // link.href = data;
-            // link.download = `${hostelName}-result.pdf`;
-            // document.body.appendChild(link);
-            link.click();
-            // document.body.removeChild(link);
-
-            this.setState(() => ({ error: "" }));
-        } catch (e) {
-            console.log(e.response);
-            this.setState(() => ({ error: "!!! Please refresh the page" }));
-        }
-    };
     downloadList = (inbox) => {
         return inbox.map((hostelName, index) => (
             <div className="pdfflex" key={index}>
@@ -54,19 +26,11 @@ export default class AdminInfo extends React.Component {
                 <div>
                     {" "}
                     <a
-                        href={`https://hostel-allotment-api.herokuapp.com/admin/result?hostelName=${hostelName}`}
+                        href={`/api/admin/result?hostelName=${hostelName}`}
                         download={`${hostelName}-result.pdf`}
                     >
-                        <button>Download</button>
+                        <button>download</button>
                     </a>
-                    {/* <button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            this.handleDownload(hostelName);
-                        }}
-                    >
-                        download
-                    </button> */}
                 </div>
             </div>
         ));
@@ -87,19 +51,9 @@ export default class AdminInfo extends React.Component {
                         >
                             Your Info
                         </button>
-                        {/*
-            <button
-              className={
-                this.state.variable === 2 ? "userinfoflex3" : "userinfoflex2"
-              }
-              onClick={this.handlepassword}
-            >
-              Change Password
-            </button>
-            */}
                         <button
                             className={
-                                this.state.variable === 3
+                                this.state.variable === 2
                                     ? "userinfoflex3"
                                     : "userinfoflex2"
                             }
@@ -113,14 +67,8 @@ export default class AdminInfo extends React.Component {
                             {this.state.variable === 1
                                 ? yourinfo(this.props.User)
                                 : ""}
-                            {/*this.state.variable === 2 ? <ChangeAdminpassword /> : ""*/}
-                            {this.state.variable === 3 && (
+                            {this.state.variable === 2 && (
                                 <div>
-                                    {this.state.error && (
-                                        <p className="error">
-                                            {this.state.error}
-                                        </p>
-                                    )}
                                     <h3>
                                         Download PDF file of Declared Results...
                                     </h3>
