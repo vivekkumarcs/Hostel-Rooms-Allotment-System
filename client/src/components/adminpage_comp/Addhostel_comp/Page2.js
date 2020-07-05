@@ -2,6 +2,7 @@
 import React from "react";
 import axios from "axios";
 import validateCSV from "./csvFileValidation";
+import template from "../../../template.csv";
 
 class Page2 extends React.Component {
     state = {
@@ -67,10 +68,14 @@ class Page2 extends React.Component {
                     <div className="widthsetting">
                         {" "}
                         <p>
-                            Column Headers in the file to be uploaded must be in
+                            {/* Column Headers in the file to be uploaded must be in
                             the form as:
                             <br /> <b>rollNo</b>,<b>Email</b>,<b>Name</b>,
-                            <b>Rank</b>,<b>Disable</b>
+                            <b>Rank</b>,<b>Disable</b> */}
+                            CSV file must be in the format as provided{" "}
+                            <a href={template} download="template.csv">
+                                <b>here</b>
+                            </a>
                         </p>
                         {this.props.uploaded && !this.state.uploading && (
                             <p className="updated-status">

@@ -1,0 +1,4 @@
+rollNo,Email,Name,Rank,Disable
+1704310001,abcd@example.com,christine,1,true
+1704310002,xyz@gmail.com,Bruce,2,false
+1704310003,myemail@gmail.com,jack,3,false

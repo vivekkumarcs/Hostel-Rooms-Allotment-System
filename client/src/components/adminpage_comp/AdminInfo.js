@@ -23,7 +23,14 @@ export default class AdminInfo extends React.Component {
             const url = `/api/admin/result?hostelName=${hostelName}`;
             const userData = JSON.parse(localStorage.getItem("userData"));
             const config = { headers: { Authorization: userData.token } };
-            await axios.get(url, config);
+            const data = await axios.get(url, config);
+
+            const link = document.createElement("a");
+            link.href = "data:application/pdf;base64," + data.data;
+            link.download = `${hostelName}-result.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
             this.setState(() => ({ error: "" }));
         } catch (e) {
