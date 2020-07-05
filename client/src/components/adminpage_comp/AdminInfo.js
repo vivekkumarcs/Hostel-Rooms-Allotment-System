@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 export default class AdminInfo extends React.Component {
     state = {
