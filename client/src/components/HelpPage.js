@@ -124,7 +124,7 @@ class HelpPage extends React.Component {
                                 <div className="video">
                                     <h3>Admin Guide</h3>
                                     <iframe
-                                        src="https://www.youtube.com/embed/h7Z3rF5CzmU"
+                                        src="https://www.youtube.com/embed/f1gbQjKwx0Y"
                                         allowFullScreen={true}
                                     ></iframe>
                                 </div>
@@ -231,7 +231,7 @@ class HelpPage extends React.Component {
                                 <div className="video">
                                     <h3>User Guide</h3>
                                     <iframe
-                                        src="https://www.youtube.com/embed/f1gbQjKwx0Y"
+                                        src="https://www.youtube.com/embed/h7Z3rF5CzmU"
                                         allowFullScreen={true}
                                     ></iframe>
                                 </div>

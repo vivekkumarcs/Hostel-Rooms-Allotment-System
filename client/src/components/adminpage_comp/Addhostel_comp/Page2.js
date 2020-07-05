@@ -68,13 +68,9 @@ class Page2 extends React.Component {
                     <div className="widthsetting">
                         {" "}
                         <p>
-                            {/* Column Headers in the file to be uploaded must be in
-                            the form as:
-                            <br /> <b>rollNo</b>,<b>Email</b>,<b>Name</b>,
-                            <b>Rank</b>,<b>Disable</b> */}
-                            CSV file must be in the format as provided{" "}
+                            Download sample CSV file{" "}
                             <a href={template} download="template.csv">
-                                <b>here</b>
+                                here
                             </a>
                         </p>
                         {this.props.uploaded && !this.state.uploading && (
