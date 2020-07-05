@@ -26,7 +26,7 @@ export default class AdminInfo extends React.Component {
             const data = await axios.get(url, config);
 
             const link = document.createElement("a");
-            link.href = "data:application/pdf;base64," + data.data;
+            link.href = data;
             link.download = `${hostelName}-result.pdf`;
             document.body.appendChild(link);
             link.click();
@@ -34,6 +34,7 @@ export default class AdminInfo extends React.Component {
 
             this.setState(() => ({ error: "" }));
         } catch (e) {
+            console.log(e.response);
             this.setState(() => ({ error: "!!! Please refresh the page" }));
         }
     };
