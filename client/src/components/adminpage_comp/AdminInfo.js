@@ -25,12 +25,16 @@ export default class AdminInfo extends React.Component {
             const config = { headers: { Authorization: userData.token } };
             const data = await axios.get(url, config);
 
-            const link = document.createElement("a");
-            link.href = data;
-            link.download = `${hostelName}-result.pdf`;
-            document.body.appendChild(link);
+            const link = React.createElement(
+                "a",
+                { href: data, download: `${hostelName}-result.pdf` },
+                ""
+            );
+            // link.href = data;
+            // link.download = `${hostelName}-result.pdf`;
+            // document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
+            // document.body.removeChild(link);
 
             this.setState(() => ({ error: "" }));
         } catch (e) {
