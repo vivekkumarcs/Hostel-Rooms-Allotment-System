@@ -390,19 +390,25 @@ router.get("/result", async (req, res) => {
         const Hostel = await hostel.findOne(
             {
                 name: req.query.hostelName,
-                // admin: req.User._id,
+                round: 3,
             },
             { users: 0 }
         );
+        if (req.query.check) {
+            res.send({ present: !!Hostel });
+        } else {
+            res.set("Content-Type", "application/pdf");
+            res.set("Content-Length", Hostel.result.length);
+            res.set(
+                "Content-Disposition",
+                `attachment; filename=${req.query.hostelName.replace(
+                    / /g,
+                    "-"
+                )}-result.pdf`
+            );
 
-        res.set("Content-Type", "application/pdf");
-        res.set("Content-Length", Hostel.result.length);
-        res.set(
-            "Content-Disposition",
-            `attachment; filename=${req.query.hostelName}-result.pdf`
-        );
-
-        res.send(Hostel.result);
+            res.send(Hostel.result);
+        }
     } catch (e) {
         console.log({ path: "/admin/result", error: e });
         res.status(400).send({ error: "data not found" });

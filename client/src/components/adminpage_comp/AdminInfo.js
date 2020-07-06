@@ -1,8 +1,9 @@
 import React from "react";
-
+import { downloadCheck } from "../../utils/backend/other";
 export default class AdminInfo extends React.Component {
     state = {
         variable: 1,
+        error: "",
     };
 
     handleinfo = () => {
@@ -11,6 +12,25 @@ export default class AdminInfo extends React.Component {
 
     handleresult = () => {
         this.setState(() => ({ variable: 2 }));
+    };
+
+    handleDownload = async (hostelName) => {
+        try {
+            // backend call
+            const data = await downloadCheck(hostelName);
+
+            if (data.data.present) {
+                const link = document.createElement("a");
+                link.href = `/api/admin/result?hostelName=${hostelName}`;
+                link.download = `${hostelName}-result.pdf`;
+                link.click();
+            } else {
+                throw new Error();
+            }
+            this.setState(() => ({ error: "" }));
+        } catch (e) {
+            this.setState(() => ({ error: "!! Please refresh the page" }));
+        }
     };
 
     downloadList = (inbox) => {
@@ -24,12 +44,14 @@ export default class AdminInfo extends React.Component {
                 </div>
                 <div>
                     {" "}
-                    <a
-                        href={`/api/admin/result?hostelName=${hostelName}`}
-                        download={`${hostelName}-result.pdf`}
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            this.handleDownload(hostelName);
+                        }}
                     >
-                        <button>download</button>
-                    </a>
+                        download
+                    </button>
                 </div>
             </div>
         ));
@@ -71,7 +93,11 @@ export default class AdminInfo extends React.Component {
                                     <h3>
                                         Download PDF file of Declared Results...
                                     </h3>
-
+                                    {this.state.error && (
+                                        <p className="errorshow">
+                                            {this.state.error}
+                                        </p>
+                                    )}
                                     {this.props.User.inbox.length === 0 ? (
                                         <p>Currently no results declared.</p>
                                     ) : (

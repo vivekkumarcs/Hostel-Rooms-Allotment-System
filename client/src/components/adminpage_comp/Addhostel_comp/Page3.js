@@ -1,6 +1,6 @@
 //date filling
 import React from "react";
-import axios from "axios";
+import { finalSubmit } from "../../../utils/backend/admin";
 class Page3 extends React.Component {
     state = {
         errormessage: "",
@@ -19,16 +19,11 @@ class Page3 extends React.Component {
             //     throw new Error("Date must be greater than current Date");
             // }
 
-            // send the date to backend using axios
-            const url = `/api/admin/${this.props.id}/finalSubmit`;
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
             const data = { Date: date };
-            await axios.post(url, data, config);
+
+            // backend call
+            await finalSubmit(this.props.id, data);
+
             this.props.nextStep();
         } catch (e) {
             let msg = "Please try again later";

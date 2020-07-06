@@ -8,7 +8,7 @@ class SearchPanel extends React.Component {
         this.setState(() => ({ submitting: true }));
         const data = {};
         const search = e.target.elements.search.value.trim();
-        if (!search) data.search = null;
+        if (!search) data.search = "";
         else {
             let re = /^[A-Za-z ]+$/;
             if (re.test(search)) {

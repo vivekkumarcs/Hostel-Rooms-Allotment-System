@@ -1,10 +1,10 @@
 import React from "react";
 import validator from "validator";
-import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import ModalLoad from "../LoadingModal.js";
 import pass from "../../images/pass.png";
 import user from "../../images/user.png";
+import { login } from "../../utils/backend/other";
 
 class Login extends React.Component {
     constructor(props) {
@@ -39,9 +39,8 @@ class Login extends React.Component {
                 credential.userid = username;
             }
 
-            // authenticating credentials from backend
-            const Data = await axios.post("/api/signin", credential);
-            this.props.authenticated(Data.data);
+            const data = await login(credential);
+            this.props.authenticated(data.data);
             this.setRedirect();
         } catch (e) {
             let msg = "";

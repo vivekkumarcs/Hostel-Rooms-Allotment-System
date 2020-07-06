@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
 import Modal from "react-modal";
 import ModalLoad from "../LoadingModal.js";
+import { getHostels, deleteHostel } from "../../utils/backend/admin.js";
 
 class Currenthostel extends React.Component {
     state = {
@@ -12,19 +12,11 @@ class Currenthostel extends React.Component {
     };
 
     componentDidMount = async () => {
-        //load all the hostels of admin
-        //and store it to state
         this.setState(() => ({ modalshow: true }));
         try {
-            const url = "/api/admin/hostels";
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
-            const Hostels = await axios.get(url, config);
-            //console.log(Hostels.data);
+            // backend call
+            const Hostels = await getHostels();
+
             this.setState(() => ({ hostels: Hostels.data }));
         } catch (e) {}
         this.setState(() => ({ modalshow: undefined }));
@@ -40,16 +32,8 @@ class Currenthostel extends React.Component {
     handleRemove = async (e) => {
         try {
             if (e.target.id === "yes") {
-                // sending delete request
-                const url = `/api/admin/${this.state.selectedOptionId}`;
-                const config = {
-                    headers: {
-                        Authorization: JSON.parse(
-                            localStorage.getItem("userData")
-                        ).token,
-                    },
-                };
-                await axios.delete(url, config);
+                // backend call
+                await deleteHostel(this.state.selectedOptionId);
 
                 this.setState((prevState) => ({
                     hostels: prevState.hostels.filter(

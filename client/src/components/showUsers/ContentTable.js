@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
 import UserModal from "./UsersModal";
+import { updateUserDetails } from "../../utils/backend/admin";
 
 class ContentTable extends React.Component {
     state = {
@@ -16,14 +16,10 @@ class ContentTable extends React.Component {
         console.log(details);
         try {
             const User = this.props.Users[this.state.index];
-            const url = `/api/admin/${User.hostelid}/${User._id}`;
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
-            await axios.patch(url, details, config);
+
+            // backend call
+            await updateUserDetails(User.hostelid, User._id, details);
+
             return true;
         } catch (e) {
             return false;

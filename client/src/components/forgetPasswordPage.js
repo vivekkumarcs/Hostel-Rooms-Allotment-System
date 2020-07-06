@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
 import validator from "validator";
 import lock from "./lock.png";
+import { sendOTP, OTPVerify, updatePassword } from "../utils/backend/other";
 class Passwordreset extends React.Component {
     state = {
         Email: "",
@@ -25,13 +25,11 @@ class Passwordreset extends React.Component {
                 throw new Error();
             }
 
-            //backend call
-
-            const url = "/api/forgetPassword";
             const credential = {};
             credential.email = email;
 
-            const data = await axios.post(url, credential);
+            const data = await sendOTP(credential);
+
             if (!data.data.sent) {
                 this.setState(() => ({
                     error: "Provided email does not exists in our database",
@@ -58,12 +56,9 @@ class Passwordreset extends React.Component {
     handleResend = async () => {
         this.setState(() => ({ disablePage2b: true }));
 
-        // backend call
-
-        const url = "/api/forgetPassword";
         const credential = {};
         credential.email = this.state.Email;
-        const data = await axios.post(url, credential);
+        const data = await sendOTP(credential);
         if (data.data.sent) {
             this.setState(() => ({
                 error: "",
@@ -81,13 +76,12 @@ class Passwordreset extends React.Component {
         this.setState(() => ({ disablePage2a: true }));
         // backend call
 
-        const url = "/api/otpVerify";
         const credential = {};
         credential.email = this.state.Email;
         credential.OTP = parseInt(e.target.elements.otp.value);
 
         try {
-            await axios.post(url, credential);
+            await OTPVerify(credential);
             this.setState(() => ({
                 isSetPage: 3,
                 error: "",
@@ -124,13 +118,10 @@ class Passwordreset extends React.Component {
                 throw new Error();
             }
 
-            // backend call
-
-            const url = "/api/changePassword";
             const credential = {};
             credential.email = this.state.Email;
             credential.newPassword = x;
-            await axios.post(url, credential);
+            await updatePassword(credential);
 
             this.setState(() => ({
                 successMsg: "Your password is updated successfully.",
@@ -196,16 +187,13 @@ class Passwordreset extends React.Component {
                     <hr />
                 </div>
                 <div>
-                    <p className="success">{this.state.successMsg}</p>
-                    {this.state.error && (
-                        <div className="error-box">
-                            <span className="error-sign">!</span>
-                            <p className="error-content">{this.state.error}</p>
-                        </div>
-                    )}
                     <p>
                         Email Id: <span>{this.state.Email}</span>
                     </p>
+                    <p className="success">{this.state.successMsg}</p>
+                    {this.state.error && (
+                        <p className="errorshow">{this.state.error}</p>
+                    )}
                     <span>
                         <form
                             onSubmit={this.handleSubmitPage2}
@@ -255,16 +243,13 @@ class Passwordreset extends React.Component {
                     <h3 className="heading">Password Reset</h3>
                     <hr />
                 </div>
-                <p className="success">{this.state.successMsg}</p>
-                {this.state.error && (
-                    <div className="error-box">
-                        <span className="error-sign">!</span>
-                        <p className="error-content">{this.state.error}</p>
-                    </div>
-                )}
                 <p>
                     Email Id: <span>{this.state.Email}</span>
                 </p>
+                <p className="success">{this.state.successMsg}</p>
+                {this.state.error && (
+                    <p className="errorshow">{this.state.error}</p>
+                )}
                 <form
                     onSubmit={this.handlePasswordUpdate}
                     onKeyPress={(event) =>

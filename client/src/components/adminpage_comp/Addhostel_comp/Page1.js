@@ -1,7 +1,10 @@
 //  hostel details....
 import React from "react";
 import validateRange from "./errorCheck";
-import axios from "axios";
+import {
+    updateHostelDetails,
+    addNewHostel,
+} from "../../../utils/backend/admin";
 
 class Page1 extends React.Component {
     constructor(props) {
@@ -46,12 +49,6 @@ class Page1 extends React.Component {
                     "Room Range for physically disabled"
                 );
             }
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
 
             if (this.props.values.saved) {
                 const provided = this.props.values;
@@ -65,16 +62,14 @@ class Page1 extends React.Component {
                         provided.wrapAround === hostelData.wrapAround
                     )
                 ) {
-                    //call axios to update data of existing hostel
+                    // backend call
                     console.log("I am from existing");
-                    const url = `/api/admin/${this.props.values.id}`;
-                    await axios.patch(url, hostelData, config);
+                    await updateHostelDetails(this.props.values.id, hostelData);
                 }
             } else {
-                //call axios to add the data of new hostel
+                // backend call
                 console.log("I am from new");
-                const url = "/api/admin/hostel";
-                const data = await axios.post(url, hostelData, config);
+                const data = await addNewHostel(hostelData);
 
                 hostelData.id = data.data._id;
             }

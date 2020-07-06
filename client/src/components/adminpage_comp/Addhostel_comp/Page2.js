@@ -1,8 +1,8 @@
 // csv upload
 import React from "react";
-import axios from "axios";
 import validateCSV from "./csvFileValidation";
 import template from "../../../template.csv";
+import { uploadCSV } from "../../../utils/backend/admin";
 
 class Page2 extends React.Component {
     state = {
@@ -23,18 +23,13 @@ class Page2 extends React.Component {
                 throw new Error();
             }
             this.setState(() => ({ inValidMessages: [] }));
-            //uploading the csv to server
-            const url = `/api/admin/${this.props.id}/upload`;
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                    "Content-Type": "multipart/form-data",
-                },
-            };
+
             const data = new FormData();
             data.append("upload", e.target.elements.csvData.files[0]);
-            await axios.post(url, data, config);
+
+            // backend call
+            await uploadCSV(this.props.id, data);
+
             this.props.upload();
             this.setState(() => ({ inValidMessages: [], error: "" }));
         } catch (e) {

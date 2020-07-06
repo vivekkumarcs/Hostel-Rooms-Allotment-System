@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
 import ModalLoad from "./LoadingModal.js";
 import pic from "../images/signup.png";
+import { signUp } from "../utils/backend/other";
 
 class Signup extends React.Component {
     state = {
@@ -29,9 +29,9 @@ class Signup extends React.Component {
             credential.email = email;
             credential.password = password;
             credential.uniqueKey = uniqueKey;
-            const url = "/api/signup";
-            const Data = await axios.post(url, credential);
-            this.props.authenticated(Data.data);
+
+            const data = await signUp(credential);
+            this.props.authenticated(data.data);
         } catch (e) {
             let msg = "";
             if (e.response) {

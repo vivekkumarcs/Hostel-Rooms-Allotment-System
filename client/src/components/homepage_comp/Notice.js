@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
+import { getNotification } from "../../utils/backend/other";
 
 class Notice extends React.Component {
     state = {
-        students: [],
+        students: ["No notifications to show"],
     };
 
     createNoticeElement = () =>
@@ -15,32 +15,20 @@ class Notice extends React.Component {
 
     componentDidMount = async () => {
         try {
-            const data = await axios.get("/api/getNotification");
-            // console.log(data.data);
+            const data = await getNotification();
             const s = [];
             data.data.forEach((d) => {
                 let x = "";
                 if (d.editable) {
                     x = `${d.name} result has been declared`;
                 } else {
-                    const date = new Date(d.Date).toString();
-                    x = `${d.name} allotment is scheduled on ${date.slice(
-                        0,
-                        15
-                    )}`;
-                    // console.log(new Date(d.Date));
+                    const date = new Date(d.Date).toDateString();
+                    x = `${d.name} allotment is scheduled on ${date}`;
                 }
                 s.push(x);
             });
-            if (s.length === 0) {
-                s.push("No notifications to show");
-            }
-            this.setState((state) => ({
-                students: s,
-            }));
-        } catch (e) {
-            // console.log(e);
-        }
+            s.length > 0 && this.setState(() => ({ students: s }));
+        } catch (e) {}
     };
     render() {
         return (

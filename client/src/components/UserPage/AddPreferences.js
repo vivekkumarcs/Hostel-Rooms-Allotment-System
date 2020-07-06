@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
 import Option from "./options";
 import Select from "react-select";
 import Modal from "react-modal";
 import OptionModal from "./vacantRoomModel";
 import logo from "./../../styles/components/questionmark.png";
+import { addPreferences } from "../../utils/backend/user";
 
 export default class AddPrefernces extends React.Component {
     state = {
@@ -127,15 +127,9 @@ export default class AddPrefernces extends React.Component {
             }));
         } else {
             try {
-                const url = "/api/user/preferences";
-                const config = {
-                    headers: {
-                        Authorization: JSON.parse(
-                            localStorage.getItem("userData")
-                        ).token,
-                    },
-                };
-                await axios.post(url, data, config);
+                // backend call
+                await addPreferences(data);
+
                 this.setState(() => ({
                     error: "Your preferences have been updated",
                 }));

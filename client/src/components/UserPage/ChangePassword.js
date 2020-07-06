@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+import { changePassword } from "../../utils/backend/user";
+
 export default class ChangeAdminpassword extends React.Component {
     state = {
         error: "",
@@ -15,13 +16,13 @@ export default class ChangeAdminpassword extends React.Component {
         const retypePassword = e.target.elements.retypePassword.value;
         try {
             const re = /^[A-Za-z0-9]{8,15}$/;
-            const msg = "password must contain only alphaNumerics";
+            const msg = "Password must contain only alphaNumerics";
             if (!re.test(prevPassword)) throw new Error("Old " + msg);
             if (!re.test(newPassword)) throw new Error("New " + msg);
             if (!re.test(retypePassword)) throw new Error("re-Enter " + msg);
             if (newPassword !== retypePassword) {
                 throw new Error(
-                    "! New password and re-entered password did not match"
+                    "New password and re-entered password did not match"
                 );
             }
             if (newPassword === prevPassword) {
@@ -32,32 +33,24 @@ export default class ChangeAdminpassword extends React.Component {
             const credential = {};
             credential.oldPassword = prevPassword;
             credential.newPassword = newPassword;
+            // backend call
+            await changePassword(credential);
 
-            // calling the backend to change the password
-            const url = "/api/user/changePassword";
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
-            await axios.patch(url, credential, config);
-
-            this.setState(() => ({ error: "password changed successfully" }));
+            this.setState(() => ({
+                error: "Password has been changed successfully",
+            }));
             e.target.elements.prevPassword.value = "";
             e.target.elements.newPassword.value = "";
             e.target.elements.retypePassword.value = "";
         } catch (e) {
             let msg = "";
             if (e.response) {
-                const error = e.response;
-                if (error.status >= 400 && error.status < 500) {
-                    msg = "password did not satisfied the criteria";
-                } else {
-                    msg = "Please Try Again Later";
-                }
+                msg = "Please try again later";
             } else {
-                msg = e.message;
+                msg =
+                    e.message === "Network Error"
+                        ? "Please check you internet connection"
+                        : e.message;
             }
             this.setState(() => ({ error: msg }));
         }

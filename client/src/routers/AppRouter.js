@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "../components/Homepage";
 import Loginpage from "../components/Loginpage";
@@ -13,25 +11,23 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Passwordreset from "../components/forgetPasswordPage";
 import ModalLoad from "../components/LoadingModal.js";
+import { logOut, getUser } from "../utils/backend/other";
 
 class AppRouter extends React.Component {
     state = {
         isAdmin: false,
         isUser: false,
-        refresh: false,
         modalshow: undefined,
     };
 
-    //this method is used to check whether the user is logged in or not
     UNSAFE_componentWillMount = async () => {
         if (localStorage.getItem("userData")) {
             this.setState(() => ({ modalshow: true }));
             try {
-                this.setState(() => ({ refresh: true }));
                 const userData = JSON.parse(localStorage.getItem("userData"));
-                const url = `/api/${userData.admin ? "admin" : "user"}`;
-                const config = { headers: { Authorization: userData.token } };
-                const data = await axios.get(url, config);
+                // backend call
+                const data = await getUser();
+
                 data.data.vacantRooms &&
                     (data.data.vacantRooms = JSON.parse(data.data.vacantRooms));
                 data.data.disabledRooms &&
@@ -44,10 +40,8 @@ class AppRouter extends React.Component {
                     User: data.data,
                     isAdmin: userData.admin,
                     isUser: !userData.admin,
-                    refresh: false,
                 }));
             } catch (e) {
-                this.setState(() => ({ refresh: false }));
                 localStorage.removeItem("userData");
             }
             this.setState(() => ({ modalshow: undefined }));
@@ -60,7 +54,7 @@ class AppRouter extends React.Component {
         userData.admin = data.admin;
         localStorage.setItem("userData", JSON.stringify(userData));
         console.log(data.User.vacantRooms);
-        // /parsing the vacant room and disable quota/;
+        // parsing the vacant room and disable quota/;
         data.User.vacantRooms &&
             (data.User.vacantRooms = JSON.parse(data.User.vacantRooms));
         data.User.disabledRooms &&
@@ -82,16 +76,10 @@ class AppRouter extends React.Component {
     };
 
     logout = async (flip) => {
-        //logging out from backend
         try {
-            const token = JSON.parse(localStorage.getItem("userData")).token;
-            const url = `/api/${this.state.isAdmin ? "admin" : "user"}/logout`;
+            // backend call
+            await logOut();
 
-            await axios.get(url, {
-                headers: {
-                    Authorization: "Bearer " + token,
-                },
-            });
             localStorage.removeItem("userData");
             this.setState(() => ({
                 isAdmin: false,
@@ -105,7 +93,7 @@ class AppRouter extends React.Component {
         return (
             <div>
                 {this.state.modalshow && <ModalLoad />}
-                {!this.state.refresh && (
+                {!this.state.modalshow && (
                     <BrowserRouter>
                         <div className="basicflex">
                             <Header

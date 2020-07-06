@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
 import Modal from "react-modal";
 import ModalLoad from "../LoadingModal.js";
+import { getHostels, discardFinalSubmit } from "../../utils/backend/admin.js";
 
 class Upcomingevents extends React.Component {
     state = {
@@ -13,15 +13,8 @@ class Upcomingevents extends React.Component {
     componentDidMount = async () => {
         this.setState(() => ({ modalshow: true }));
         try {
-            const url = "/api/admin/hostels?final=true";
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
-
-            const data = await axios.get(url, config);
+            // backend call
+            const data = await getHostels(true);
 
             this.setState(() => ({ hostels: data.data }));
         } catch (e) {
@@ -32,15 +25,9 @@ class Upcomingevents extends React.Component {
     handleDeleteOption = async (e) => {
         try {
             if (e.target.id === "yes") {
-                const url = `/api/admin/${this.state.selectedOptionId}/discard`;
-                const config = {
-                    headers: {
-                        Authorization: JSON.parse(
-                            localStorage.getItem("userData")
-                        ).token,
-                    },
-                };
-                await axios.get(url, config);
+                // backend call
+                await discardFinalSubmit(this.state.selectedOptionId);
+
                 this.setState((prevState) => ({
                     hostels: prevState.hostels.filter(
                         (hostel) => hostel._id !== this.state.selectedOptionId

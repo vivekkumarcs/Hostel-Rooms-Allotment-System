@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-//we need last round so we dont show go to the next round
+import { applyForNextRound } from "../../utils/backend/user";
 
 export default class AllotmentResult extends React.Component {
     state = {
@@ -31,14 +30,9 @@ export default class AllotmentResult extends React.Component {
     applyForNextRound = async (e) => {
         e.preventDefault();
         try {
-            const url = "/api/user/apply";
-            const config = {
-                headers: {
-                    Authorization: JSON.parse(localStorage.getItem("userData"))
-                        .token,
-                },
-            };
-            !this.props.User.nextRound && (await axios.get(url, config));
+            // backend call
+            !this.props.User.nextRound && (await applyForNextRound());
+
             this.setState(() => ({
                 error: "you have successfully applied for next Round",
                 color: "green",
@@ -150,10 +144,17 @@ export default class AllotmentResult extends React.Component {
                 <div className="LargeSize" style={{ textAlign: "center" }}>
                     {this.handleShow()}
                 </div>
-                {/* <p style={{ textAlign: "center" }}>
-                    To download PDF of result{" "}
-                    <button className="csvbuttons">Click here</button>
-                </p> */}
+                {this.state.round === 3 && (
+                    <p style={{ textAlign: "center" }}>
+                        To download PDF of result{" "}
+                        <a
+                            href={`/api/admin/result?hostelName=${this.props.User.hostelName}`}
+                            download
+                        >
+                            <button className="csvbuttons">Click here</button>
+                        </a>
+                    </p>
+                )}
             </div>
         );
     }
