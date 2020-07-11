@@ -93,6 +93,9 @@ router.post("/signin", async (req, res) => {
             User = User.toObject();
             User.hostelName = Hostel.name;
             User.Date = Hostel.Date;
+            User.roomCapacity = Hostel.capacity;
+            User.roomRange = Hostel.roomRange;
+            User.disabledRoomRange = Hostel.disabledRoomRange;
             if (Hostel.editable) User.Date = null;
             if (User.editable) {
                 User.vacantRooms = Hostel.vacantRooms;
@@ -164,20 +167,23 @@ router.post("/forgetPassword", async (req, res) => {
                     break;
                 }
             }
-            const s = "0123456789";
+            const s = "1234567890";
             let OTP = "";
-            for (let i = 0; i < 6; i++) {
+            OTP += s[Math.floor(Math.random() * 9)];
+            for (let i = 0; i < 5; i++) {
                 OTP += s[Math.floor(Math.random() * 10)];
             }
             OTP = parseInt(OTP);
             tmp = new otp({ email: req.body.email.toLowerCase(), OTP: OTP });
             await tmp.save();
+
             await sendEmail(
                 tmp.email,
                 "Password Reset",
                 `${tmp.OTP} is One Time Password. This is valid for 120 seconds.`,
                 ""
             );
+
             res.send({ sent: true });
         } while (false);
     } catch (e) {

@@ -17,14 +17,7 @@ const _1pm = async () => {
         $or: [{ result: { $eq: "" } }, { nextRound: { $eq: true } }],
     };
     for (const Hostel of Hostels) {
-        await user.updateMany(
-            {
-                _id: { $in: Hostel.users },
-                nextRound: { $eq: false },
-                result: { $ne: "" },
-            },
-            { round: 4 }
-        );
+        const ids = Hostel.users.map((id) => id);
 
         const tmpData = await temp.findOne({ name: Hostel.name });
         let data = JSON.parse(tmpData.data);
@@ -73,6 +66,15 @@ const _1pm = async () => {
             User.editable = true;
             await User.save();
         }
+
+        await user.updateMany(
+            {
+                _id: { $in: ids },
+                round: { $eq: 1 },
+            },
+            { round: 4 }
+        );
+
         tmpData.data = JSON.stringify(data);
         await tmpData.save();
     }

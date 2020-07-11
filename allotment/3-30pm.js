@@ -36,11 +36,6 @@ const _330pm = async () => {
     for (const Hostel of Hostels) {
         let hostelData = await hostel.findOne({ _id: Hostel._id }).populate({
             path: "users",
-            // select: {
-            //     userid: 1,
-            //     name: 1,
-            //     result: 1,
-            // },
             options: {
                 sortby: {
                     rollNo: 1,
@@ -49,14 +44,22 @@ const _330pm = async () => {
         });
 
         let users = hostelData.users.map((user) => [user.rollNo, user.result]);
+        users.sort((a, b) =>
+            a[1].localeCompare(b[1], undefined, {
+                numeric: true,
+                sensitivity: "base",
+            })
+        );
+
+        let d = new Date(hostelData.Date);
+        let date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+        await generatePDF(Hostel.name, date, users);
+
         for (User of hostelData.users) {
             User.round = 3;
             await User.save();
         }
-        let d = new Date(hostelData.Date);
-        let date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-        console.log(users);
-        await generatePDF(Hostel.name, date, users);
+
         Hostel.round = 3;
         await Hostel.save();
     }

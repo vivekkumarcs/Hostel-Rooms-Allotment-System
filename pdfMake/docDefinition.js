@@ -26,7 +26,7 @@ const documentDefinition = {
                             bold: true,
                         },
                         {
-                            text: "rollNo",
+                            text: "Roll Number",
                             bold: true,
                         },
                         {

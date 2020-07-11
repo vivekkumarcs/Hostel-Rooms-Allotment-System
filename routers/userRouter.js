@@ -9,8 +9,12 @@ const router = express.Router();
 router.get("/", userAuth, async (req, res) => {
     const Hostel = await hostel.findById(req.User.hostelid);
     let User = req.User.toObject();
+
     User.hostelName = Hostel.name;
     User.Date = Hostel.Date;
+    User.roomCapacity = Hostel.capacity;
+    User.roomRange = Hostel.roomRange;
+    User.disabledRoomRange = Hostel.disabledRoomRange;
     if (Hostel.editable) User.Date = null;
     if (User.editable) {
         User.vacantRooms = Hostel.vacantRooms;
